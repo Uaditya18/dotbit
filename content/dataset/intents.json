@@ -425,6 +425,19 @@
 			  ],
             "context": [""]
         },
+        
+		{
+            "tag": "Application-of-array",
+            "patterns": ["How do you define applications of array", "what applications of array", "Give me a brief description of application of array ", "Insertion in array", "explain the term insertion in array "],
+            "responses": ["arrays are fundamental data structures with a wide range of applications in computer science, software development, and scientific computing. ",
+			  "Arrays are used in memory management systems to allocate and deallocate memory dynamically. Dynamic arrays, also known as resizable arrays, are often implemented using arrays that resize themselves as needed to accommodate new elements.  ",
+			   "Arrays are widely used in numerical computing and scientific computing libraries like NumPy in Python or MATLAB. These libraries provide efficient array operations for mathematical computations like linear algebra, statistics, and signal processing ",
+			    " Arrays are used to represent graphs and trees in computer science. For example, an array of adjacency lists can represent a graph, and arrays are commonly used to implement binary trees and heaps.",
+				 "Arrays are used to implement hash tables, a data structure that maps keys to values. In hash tables, arrays serve as the underlying storage for key-value pairs, and a hashing function is used to determine the index where each pair should be stored. ",
+                " Arrays are essential in dynamic programming, a method used to solve complex problems by breaking them down into simpler subproblems. Dynamic programming algorithms often use arrays to store solutions to subproblems efficiently",
+            "Arrays play a central role in sorting and searching algorithms. Many sorting algorithms, like bubble sort, quicksort, and merge sort, operate directly on arrays. Similarly, searching algorithms like linear search and binary search are often implemented using arrays."],
+            "context": [""]
+        },
      
                 {
                 "tag": "Sorting",
@@ -449,7 +462,8 @@
             {
                 "tag": "Bucket Sort",
                 "patterns": ["Bucket Sort", "Define Bucket Sort","What is Bucket Sort"],
-                "responses": ["Bucket Sort is a distribution sort algorithm that divides the input array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or recursively applying the bucket sort algorithm. After all the individual buckets are sorted, the buckets are concatenated to produce the final sorted array.","the overall time complexity of Bucket Sort is approximately O(n + k * (m^2)), where n is the number of elements in the input array and k is the number of buckets."],
+                "responses": ["Bucket Sort is a distribution sort algorithm that divides the input array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or recursively applying the bucket sort algorithm. After all the individual buckets are sorted, the buckets are concatenated to produce the final sorted array.",
+                "the overall time complexity of Bucket Sort is approximately O(n + k * (m^2)), where n is the number of elements in the input array and k is the number of buckets."],
                 "context": [""]
             },
             {
@@ -473,7 +487,8 @@
             {
                 "tag": "Cycle Sort",
                 "patterns": ["Cycle Sort", "What is Cycle Sort","cycle sort","Define Cycle Sort"],
-                "responses": ["Cycle Sort is an in-place sorting algorithm that works well for situations where the number of swaps should be minimized. It's not a comparison-based sorting algorithm like Merge Sort or Quick Sort. Instead, it's based on the idea of minimizing the number of writes to the array. It achieves this by rotating elements to their correct positions, effectively minimizing the number of swaps.","Cycle Sort has a time complexity of O(n^2) in the worst-case scenario, but it's more efficient than many comparison-based algorithms because it minimizes the number of writes to the array."],
+                "responses": ["Cycle Sort is an in-place sorting algorithm that works well for situations where the number of swaps should be minimized. It's not a comparison-based sorting algorithm like Merge Sort or Quick Sort. Instead, it's based on the idea of minimizing the number of writes to the array. It achieves this by rotating elements to their correct positions, effectively minimizing the number of swaps.",
+                "Cycle Sort has a time complexity of O(n^2) in the worst-case scenario, but it's more efficient than many comparison-based algorithms because it minimizes the number of writes to the array."],
                 "context": [""]
             },
             {
@@ -485,7 +500,8 @@
             {
                 "tag": "Heap Sort",
                 "patterns": ["Heap Sort","What is Heap Sort","Define Heap Sort"],
-                "responses": ["Heap Sort is a comparison-based sorting algorithm that operates by first building a heap from the input array and then repeatedly removing the largest (for a max-heap) or smallest (for a min-heap) element from the heap and placing it at the end of the sorted array. The heap is then adjusted to maintain its heap property, and the process is repeated until the heap is empty.","Heap Sort has a time complexity of O(n log n) in all cases, where n is the number of elements in the input array."],
+                "responses": ["Heap Sort is a comparison-based sorting algorithm that operates by first building a heap from the input array and then repeatedly removing the largest (for a max-heap) or smallest (for a min-heap) element from the heap and placing it at the end of the sorted array. The heap is then adjusted to maintain its heap property, and the process is repeated until the heap is empty.",
+                "Heap Sort has a time complexity of O(n log n) in all cases, where n is the number of elements in the input array."],
                 "context": [" "]
             },
             {
@@ -497,7 +513,8 @@
             {
                 "tag": "Insertion Sort",
                 "patterns": ["Insertion Sort", "What is Insertion Sort","insertion sort","Define Insertion Sort"],
-                "responses": ["Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time. It's efficient for small data sets and usually performs well when the input array is nearly sorted.","Insertion Sort has a time complexity of O(n^2) in the worst-case scenario, where n is the number of elements in the input array. However, it can have a best-case time complexity of O(n) when the array is already sorted"],
+                "responses": ["Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time. It's efficient for small data sets and usually performs well when the input array is nearly sorted.",
+                "Insertion Sort has a time complexity of O(n^2) in the worst-case scenario, where n is the number of elements in the input array. However, it can have a best-case time complexity of O(n) when the array is already sorted"],
                 "context": [""]
             },
             {
@@ -521,7 +538,8 @@
             {
                 "tag": "Odd Even Sort",
                 "patterns": ["Odd-Even Sort","What is Odd Even Sort","Define Odd Even Sort"],
-                "responses": ["Odd-Even Sort, also known as Brick Sort, is a variation of the Bubble Sort algorithm. It's particularly effective for parallel computing because it can be easily parallelized.","Odd-Even Sort has a time complexity of O(n^2) in the worst case, where n is the number of elements in the array. However, it can perform better than Bubble Sort in certain scenarios because it parallelizes well, allowing multiple pairwise comparisons to occur simultaneously."],
+                "responses": ["Odd-Even Sort, also known as Brick Sort, is a variation of the Bubble Sort algorithm. It's particularly effective for parallel computing because it can be easily parallelized.",
+                "Odd-Even Sort has a time complexity of O(n^2) in the worst case, where n is the number of elements in the array. However, it can perform better than Bubble Sort in certain scenarios because it parallelizes well, allowing multiple pairwise comparisons to occur simultaneously."],
                 "context": [" "]
             },
             {
@@ -533,7 +551,8 @@
             {
                 "tag": "Quick Sort",
                 "patterns": ["Quick Sort","What is Quick Sort","Define Quick Sort"],
-                "responses": ["Quick Sort is a widely used comparison-based sorting algorithm that follows the divide-and-conquer strategy. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted independently.","Quick Sort has a time complexity of O(n log n) in the average and best cases, making it one of the fastest sorting algorithms. However, in the worst-case scenario, its time complexity is O(n^2), which occurs when the pivot is consistently chosen as the smallest or largest element."],
+                "responses": ["Quick Sort is a widely used comparison-based sorting algorithm that follows the divide-and-conquer strategy. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted independently.",
+                "Quick Sort has a time complexity of O(n log n) in the average and best cases, making it one of the fastest sorting algorithms. However, in the worst-case scenario, its time complexity is O(n^2), which occurs when the pivot is consistently chosen as the smallest or largest element."],
                 "context": [" "]
             },
             {
@@ -545,7 +564,8 @@
             {
                 "tag": "Selection Sort",
                 "patterns": ["Selection Sort","What is Selection Sort","Define Selection Sort"],
-                "responses": ["Selection Sort is a simple comparison-based sorting algorithm. It works by repeatedly selecting the smallest (or largest, depending on the sorting order) element from the unsorted portion of the array and moving it to the beginning of the sorted portion.","Selection Sort has a time complexity of O(n^2) in all cases, making it inefficient for large lists. However, it's quite simple and easy to implement."],
+                "responses": ["Selection Sort is a simple comparison-based sorting algorithm. It works by repeatedly selecting the smallest (or largest, depending on the sorting order) element from the unsorted portion of the array and moving it to the beginning of the sorted portion.",
+                "Selection Sort has a time complexity of O(n^2) in all cases, making it inefficient for large lists. However, it's quite simple and easy to implement."],
                 "context": [" "]
             },
             {
@@ -583,7 +603,7 @@
                 "tag": "BFS",
                 "patterns": ["What is BFS","Breadth First Search","Define BFS","breadth-first search"],
                 "responses": ["Breadth-first search (BFS) is a graph traversal algorithm that explores a graph level by level. It starts at a specified vertex and explores all of its neighbors at the current level before moving on to the next level.",
-                "BFS examines all its adjacent vertices (neighbors) that have not been visited yet. It enqueues these unvisited neighbors, marks them as visited, and continues the process until all reachable vertices have been explored."],
+                "BFS examines all its adjacent vertices (neighbors) that have not been visited yet. It enstacks these unvisited neighbors, marks them as visited, and continues the process until all reachable vertices have been explored."],
                 "context": [" "]
             },
             {
@@ -592,5 +612,363 @@
                 "responses": ["The time complexity of Breadth-First Search (BFS) is O(V + E), where V is the number of vertices (nodes) and E is the number of edges in the graph being traversed."],
                 "context": [" "]
             }
+
+
+            ,
+		{
+            "tag": "Linked-List",
+            "patterns": ["How do you define Linked list", "what is linked list", "Give me a brief description of linked list", "linked list", "explain the term linked list"],
+            "responses": ["A linked list is a linear data structure consisting of a sequence of elements, where each element points to the next element in the sequence ",
+			  " The elements in a linked list are called nodes. Each node contains two parts: data and a reference (or pointer) to the next node in the sequence. ",
+			   " Unlike arrays, linked lists can dynamically grow and shrink in size during program execution, as memory allocation for nodes is done dynamically.",
+			    "Linked lists are used in various applications where dynamic memory allocation and efficient insertion/deletion operations are required, such as implementing stacks, stacks, graphs, and dynamic memory management. ",
+				 "A linked list is a linear data structure consisting of a sequence of elements, called nodes, where each node contains two parts: data and a reference (or pointer) to the next node in the sequence. ",
+                ": Linked lists have higher memory overhead compared to arrays due to the pointers associated with each node."],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "Application-of-LinkedList",
+            "patterns": ["How do you define applications of linked list", "what are the applications of linked list", "Give me a brief description of applications of linked list ", "applications of linked list", "explain the term applications of linked list "],
+            "responses": ["Linked lists can be used to represent polynomials, where each node represents a term (coefficient and exponent) in the polynomial equation.",
+			  "  Linked lists are used in garbage collection algorithms to track and manage memory allocation. Nodes representing allocated memory blocks are linked together, allowing the garbage collector to traverse the list and reclaim memory that is no longer in use. ",
+			   "Linked lists can be used to represent graphs, where each node in the linked list represents a vertex, and the edges are represented by pointers between nodes. This representation is often used in adjacency list implementations. ",
+			    "Linked lists are used in conjunction with hash tables to handle collisions in hash table implementations. When multiple keys hash to the same index, they are stored in a linked list at that index. ",
+				 " linked lists are used in applications where traversal needs to wrap around from the last node to the first node, such as in scheduling algorithms or in the implementation of circular buffers",
+                "Linked lists are used in compilers and interpreters to manage symbol tables, which store information about variables, functions, and other identifiers in a program. Each node in the linked list represents a symbol and its associated attributes."],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "dynamic-memory-allocation",
+            "patterns": ["How do you define define memory allocation in linked list", "what is memory allocation in linked list", "Give me a brief description of memory allocation in linked list ", "memory allocation in linked list", "explain the term memory allocation in linked list"],
+            "responses": ["  Linked lists are used in languages like C and C++ to manage dynamic memory allocation. They allow for efficient allocation and deallocation of memory blocks of varying sizes."
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "types-of-linkedlist",
+            "patterns": ["How do you define define types of linked list", "what types of linked list", "Give me a brief description of memory types of linked list ", "types of linked list", "explain the types of linked list "],
+            "responses": ["In computer science several types of linked lists are commonly discussed and used. Here are the main types Singly Linked List: In a singly linked list  each node contains data and a reference/pointer to the next node in the sequence. It's the simplest form of a linked list and allows traversal only in one direction from the head (first node) to the tail (last node) Doubly Linked List: In a doubly linked list each node contains data and two pointers: one to the next node and one to the previous node in the sequence. This structure allows traversal in both forward and backward directions enhancing flexibility at the cost of increased memory usage.Circular Linked List: A circular linked list is a variation where the last node points back to the first node forming a circular structure. This can be implemented with either singly or doubly linked lists. Circular linked lists are useful in applications where traversal needs to wrap around such as in scheduling algorithms or managing resources in a circular manner.Sorted Linked List: A sorted linked list maintains its elements in sorted order typically in ascending or descending order. Insertions into a sorted linked list require maintaining the sorted order making them slightly more complex than in other types of linked lists. However this structure allows for efficient searching especially with algorithms like binary search.Sparse Linked List: A sparse linked list is a specialized form used for representing sparse matrices where most elements are zero. Instead of storing all elements it only stores non-zero elements and their indices reducing memory usage for matrices with a large number of zero elements.Doubly Circular Linked List: This type combines the features of both doubly linked lists and circular linked lists where each node has pointers to both the next and previous nodes and the last node points back to the first node forming a circular structure. This provides bidirectional traversal with wrapping around."
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "singly-linked-list",
+            "patterns": ["How do you define singly linked list ", "what is singly linked list", "Give me a brief description of singly linked list ", "singly linked list", "explain the singly linked list "],
+            "responses": ["A singly linked list is a type of linked list where each node in the list contains two fields: data and a reference (or pointer) to the next node in the sequence. In a singly linked list, traversal is only possible in one direction, typically starting from the head (or first node) and following the next pointers until reaching the end of the list. The last node in the list points to null, indicating the end of the list. ",
+			  " singly linked lists are a fundamental data structure with various applications in computer science and software engineering, especially in scenarios where efficient insertion and deletion operations are required, and random access is not a primary concern. ",
+			   "Singly linked lists can be used to detect cycles in a sequence of nodes. This is done by using two pointers, known as the 'fast' and 'slow' pointers, which traverse the list at different speeds. If there is a cycle in the list, the fast pointer will eventually catch up to the slow pointer. ",
+			    " Singly linked lists can dynamically grow or shrink in size during program execution by adding or removing nodes. This dynamic behavior makes them suitable for situations where the size of the data structure may change over time.",
+				 "  Singly linked lists have a space complexity of O(n), where n is the number of elements in the list. This is because memory is allocated dynamically for each node, and additional space is required for storing pointers.",
+                "Singly linked lists are memory-efficient compared to other linked list variants such as doubly linked lists because they require only one pointer per node to maintain the sequence",
+            " Singly linked lists support efficient insertion and deletion operations at the beginning of the list. To insert a new node at the head, the new node's next pointer is set to the current head, and then the head pointer is updated to point to the new node. Similarly, deleting the head node involves updating the head pointer to point to the next node in the sequence."],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "operation-in-singly-LinkedList",
+            "patterns": ["How do you define operation in linked list", "what is operation in linked list", "Give me a brief description of operation in linked list ", "operation in linked list", "explain the term operation in linked list "],
+            "responses": ["Linked lists support various operations for manipulating and accessing data within the list. eg. insertion,deletion,update,search,traversal,reverse "
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "Insertion-in-singly-linked-list",
+            "patterns": ["How do you define insertion in linked list", "what is insertion in linked list", "Give me a brief description of insertion in linked list ", "insertion in linked list", "explain the term insertion in linked list ","How do you define insertion in singly  linked list", "what is insertion in singly linked list", "Give me a brief description of insertion in singly linked list ", "insertion in singly linked list", "explain the term insertion in singly linked list "],
+            "responses": [" Insertion in a singly linked list involves adding a new node to the list at a specific position, typically at the beginning (head), end (tail), or at any position within the list  Insertion at the Beginning (Head) To insert a new node at the beginning of a singly linked list Create a new node with the given data.Set the next pointer of the new node to point to the current head of the list.Update the head pointer to point to the new node.  Insertion at the End (Tail) To insert a new node at the end of a singly linked list create a new node with the given data.Traverse the list until reaching the last node.Set the next pointer of the last node to point to the new node.Update the new node's next pointer to null (indicating the end of the list), if necessary"
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "deletion-in-singly-linked-list",
+            "patterns": ["How do you define deletion in linked list", "what is deletion in linked list", "Give me a brief description of deletion in linked list ", "deletion in linked list", "explain the term deletion in linked list ","How do you define deletion in singly  linked list", "what is deletion in singly linked list", "Give me a brief description of deletion in singly linked list ", "deletion in singly linked list", "explain the term deletion in singly linked list "],
+            "responses": ["Deletion in a singly linked list involves removing a node from the list. Here's how deletion is performed in different scenarios: Deletion at the Beginning (Head):To delete the first node (head) of a singly linked list:Update the head pointer to point to the next node in the list.Optionally, free the memory allocated for the deleted node  Deletion at the End (Tail):To delete the last node (tail) of a singly linked list:Traverse the list until reaching the second-to-last node.Update the next pointer of the second-to-last node to null, indicating the new end of the list.Optionally, free the memory allocated for the deleted node. Deletion at a Specific Position:To delete a node at a specific position within a singly linked list:Traverse the list to locate the node before the node to be deleted.Update the next pointer of the preceding node to skip over the node to be deleted. Optionally, free the memory allocated for the deleted node In each deletion scenario, it's crucial to update the pointers correctly to maintain the integrity of the linked list structure. Additionally, remember to handle special cases, such as deleting from an empty list or when the deletion position is at the beginning or end of the list"
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "traversal-in-singly-linked-list",
+            "patterns": ["How do you define traversal in linked list", "what is traversal in linked list", "Give me a brief description of traversal in linked list ", "traversal in linked list", "explain the term traversal in linked list ","How do you define traversal in singly  linked list", "what is traversal in singly linked list", "Give me a brief description of traversal in singly linked list ", "traversal in singly linked list", "explain the term traversal in singly linked list "],
+            "responses": [" Traversal in a singly linked list involves visiting each node in the list sequentially, typically starting from the head (first node) and continuing until reaching the end of the list (where the next pointer is null). Here's how traversal is performed: Initialize a Pointer then Iterate Through the List: then Terminate When Reached the End"
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "doubly-linked-list",
+            "patterns": ["How do you define doubly linked list", "what is linked list", "Give me a brief description of doubly linked list ", "doubly linked list", "explain the term doubly linked list "],
+            "responses": ["Doubly linked lists are commonly used in scenarios where bidirectional traversal is required or where efficient insertion and deletion operations are crucial, such as implementing data structures like stacks, deques, and linked list-based versions of other data structures like hash tables and adjacency lists for graphs. ",
+			  "  Doubly linked lists have a higher memory overhead compared to singly linked lists due to the additional pointers required for each node. However, this overhead allows for more efficient traversal and manipulation of the list. ",
+			   " A doubly linked list is a type of linked list in which each node contains not only a reference to the next node in the sequence but also a reference to the previous node. This allows traversal in both forward and backward directions",
+			    "Each node in a doubly linked list contains three parts: data, a reference/pointer to the next node (often called next), and a reference/pointer to the previous node (often called prev). ",
+				 " Unlike singly linked lists, which allow traversal only in one direction (from head to tail), doubly linked lists support traversal in both forward and backward directions. This bidirectional traversal provides more flexibility in accessing and manipulating elements within the list.",
+                " Doubly linked lists, like singly linked lists, can dynamically grow or shrink in size during program execution, as memory allocation for nodes is done dynamically"],
+                 
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "insertion-in-doubly-linkedlist",
+            "patterns": ["How do you define insertion in doubly linked list ", "what is Insertion doubly linked list", "Give me a brief description of Insertion doubly linked list ", "Insertion in doubly linked list", "explain the term insertion in doubly linked list "],
+            "responses": ["Insertion in a doubly linked list involves adding a new node to the list at a specific position, typically at the beginning (head), end (tail), or at any position within the list. Here's how insertion is performed in different scenarios:Insertion at the Beginning (Head):To insert a new node at the beginning of a doubly linked list:Create a new node with the given data.Set the next pointer of the new node to point to the current head of the list.Set the previous pointer of the current head to point to the new node.Update the head pointer to point to the new Insertion at the End (Tail):To insert a new node at the end of a doubly linked list:Create a new node with the given data.Traverse the list until reaching the last node.Set the next pointer of the last node to point to the new node.Set the previous pointer of the new node to point to the last node.Insertion at a Specific Position:To insert a new node at a specific position within a doubly linked list:Traverse the list to locate the node before the desired position.Create a new node with the given data.Adjust the pointers to insert the new node between the current node and its next node"
+           ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "deletion-in-doubly-linked-list",
+            "patterns": ["How do you define deletion in doubly linked list", "what is deletion in doubly linked list", "Give me a brief description of deletion in doubly  linked list ", "deletion in doubly linked list", "explain the term deletion in doubly  linked list "],
+            "responses": ["Deletion in a doubly linked list involves removing a node from the list. Here's how deletion is performed in different scenarios:Deletion at the Beginning (Head):To delete the first node (head) of a doubly linked list:Update the head pointer to point to the next node in the list.Set the previous pointer of the new head to null, indicating that it is now the first node.Optionally, free the memory allocated for the deleted nodeDeletion at the End (Tail):To delete the last node (tail) of a doubly linked list:Traverse the list until reaching the last node.Update the next pointer of the second-to-last node to null, indicating the new end of the list.Optionally, free the memory allocated for the deleted node.Deletion at a Specific Position:To delete a node at a specific position within a doubly linked list:Traverse the list to locate the node to be deleted.Adjust the pointers of the surrounding nodes to skip over the node to be deleted.Optionally, free the memory allocated for the deleted node.In each deletion scenario, it's crucial to update the pointers correctly to maintain the integrity of the doubly linked list structure. Additionally, remember to handle special cases, such as deleting from an empty list or when the deletion position is at the beginning or end of the list"
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "traversal-in-doubly-linked-list",
+            "patterns": ["How do you define traversal in doubly linked list", "what is traversal in doubly linked list", "Give me a brief description of traversal in doubly  linked list ", "traversal in doubly linked list", "explain the term traversal in doubly  linked list "],
+            "responses": ["Traversal in a doubly linked list involves visiting each node in the list sequentially either in forward or backward direction starting from the head or tail of the list types of traversal in doubly linked list are Forward Traversal and Backward Traversal",
+            "In traversal scenario, the pointer (current) is moved through the list by updating it to point to the next or previous node, depending on the traversal direction. This allows you to access and process each element in the list in either forward or backward order."
+			 ],
+            "context": [""]
+        }
+
+        ,
+		{
+            "tag": "circular-linked-list",
+            "patterns": ["How do you circular linked list ", "what is circular linked list ", "Give me a brief description of circular linked list ", "circular linked list", "explain the term circular linked list "],
+            "responses": [" A circular linked list is a variation of the linked list data structure where the last node points back to the first node, forming a circular structure. In other words, the next pointer of the last node in the list does not point to null but instead points to the first node.",
+			  "  The last node in the list points back to the first node, creating a circular arrangement of nodes.",
+			   " Unlike linear linked lists, where the last node's next pointer is null, in a circular linked list, the last node's next pointer points back to the first node. ",
+			    "circular linked list can start from any node and continue until reaching the starting node again. This means that any node in the list can be considered as the starting point for traversal. ",
+				 "circular structure, there is no fixed beginning or end in a circular linked list. Any node can serve as the starting point, and traversal can loop around indefinitely. "],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "insertion-in-circular-linkedlist",
+            "patterns": ["How do you define insertion in circular linked list ", "what is Insertion circular linked list", "Give me a brief description of Insertion circular linked list ", "Insertion in circular linked list", "explain the term insertion in circular linked list "],
+            "responses": ["Insertion in a circular linked list involves adding a new node to the list at a specific position, such as the beginning, end, or at any position within the list. When inserting into a circular linked list, it's essential to maintain the circular structure by properly updating the pointers of adjacent nodes. For example, to insert a new node at the beginning of the list, the next pointer of the new node should point to the current head of the list, and the next pointer of the last node should be updated to point to the new node. Similarly, to insert at the end of the list, the next pointer of the last node should point to the new node, and the new node's next pointer should point back to the first node. Inserting at a specific position involves traversing the list to locate the node before the desired position and adjusting the pointers accordingly. In a circular linked list, there's no concept of a null pointer, as the last node points back to the first node, forming a continuous loop. Thus, insertion operations in a circular linked list must ensure that the circular structure is maintained to facilitate proper traversal and iteration through the list."
+           ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "deletion-in-circular-linked-list",
+            "patterns": ["How do you define deletion in circular linked list", "what is deletion in circular linked list", "Give me a brief description of deletion in circular linked list ", "deletion in circular linked list", "explain the term deletion in circular linked list "],
+            "responses": ["Deletion in a circular linked list involves removing a node from the list while maintaining the circular structure by properly updating the pointers of adjacent nodes. Whether deleting at the beginning, end, or a specific position within the list, it's crucial to adjust the pointers to maintain the continuity of the circular structure. For instance, to delete the first node, the next pointer of the last node should be updated to point to the second node, and the head pointer should be reassigned to the second node. Similarly, to delete the last node, the next pointer of the second-to-last node should be updated to point to the first node, and the next pointer of the last node should be nullified. Deleting a node from a specific position involves traversing the list to locate the node to be deleted and adjusting the pointers of adjacent nodes to bypass the node being removed. Since a circular linked list does not have a null pointer, special care must be taken to ensure that the circular structure remains intact after deletion, allowing seamless traversal and iteration through the list."
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "traversal-in-circular-linked-list",
+            "patterns": ["How do you define traversal in circular linked list", "what is traversal in circular linked list", "Give me a brief description of traversal in circular linked list ", "traversal in circular linked list", "explain the term traversal in circular linked list "],
+            "responses": ["Traversal in a circular linked list entails visiting each node in the list in a cyclical manner, starting from any node and looping back to the starting node. Unlike linear linked lists, where traversal ends when reaching the last node (pointing to null), traversal in a circular linked list continues indefinitely, as each node's next pointer points to another node, forming a circular structure. To begin traversal, a starting node is selected, and then successive nodes are visited by following the next pointers until the starting node is encountered again, indicating completion of one cycle. During traversal, data within each node can be accessed or manipulated as needed. Due to the circular nature of the list, any node can serve as the starting point for traversal, providing flexibility in navigation. Traversal can be performed in either forward or backward direction, depending on the application's requirements, by following the next or previous pointers, respectively. This cyclic traversal mechanism makes circular linked lists suitable for applications where data needs to be accessed or processed in a continuous loop, such as in scheduling algorithms, circular buffers, or managing resources in a circular manner."
+			 ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "stack",
+            "patterns": ["How do you define stack", "what is stack", "Give me a brief description of stack ", "stack", "explain the term stack ","implementation of stack"],
+            "responses": ["A stack is a fundamental abstract data type that represents a collection of elements with two main operations: push and pop. It follows the Last In, First Out (LIFO) principle, meaning the most recently added element is the first one to be removed. ",
+			  "   A stack is a linear data structure that organizes elements in a sequential order. Elements are added and removed from only one end of the stack, often referred to as the top.",
+			   "stacks can dynamically grow or shrink during program execution to accommodate the addition or removal of elements. Memory allocation for stack elements is typically done dynamically. ",
+			    " stacks can be implemented using various underlying data structures, such as arrays or linked lists.",
+				 "stacks preserve the order of elements, with the most recently added element being the first one to be removed, making them suitable for scenarios where temporal ordering is important, such as in undo functionalities or processing of postfix expressions "],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "application-of-stack",
+            "patterns": ["How do you define application of stack", "what are the application of stack", "Give me a brief description of application of stack ", "application of stack", "explain the term application of stack"],
+            "responses": [" stacks have numerous applications across various domains due to their simplicity, efficiency, and adherence to the Last In, First Out (LIFO) principle.",
+			  " stacks are extensively used in programming languages to manage function calls and local variables. ",
+			   " Each function call creates a stack frame (activation record) that is pushed onto the call stack",
+			    " stacks are used to evaluate arithmetic expressions, infix, postfix, or prefix.",
+				 " stacks are used in backtracking algorithms to track the state of the search process.",
+                "stacks are employed to check the validity of expressions containing parentheses, braces, and brackets.",
+            "stacks can be used to implement the back and forward functionality in web browsers.",
+        "Many algorithms, such as depth-first search (DFS) and recursive algorithms, utilize stacks to store intermediate states or function calls."],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "operation-in-stack",
+            "patterns": ["How do you define operation in stack", "what are the operation of stack", "Give me a brief description of operation of stack ", "operations of stack", "explain the operation of stack"],
+            "responses": ["Operations on a stack involve manipulating the elements stored in the stack according to the Last In, First Out (LIFO) principle the operation are Push:Adds an element pop: remove the top element peek:display the top element isEmpty:check the stack is empty or not isFull: check the stack is full or not "
+			   ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "push-operation-in-stack",
+            "patterns": ["How do you define push operation in stack", "what is push operation in stack", "Give me a brief description of push operation in stack ", "push operation in stack", "explain the term push operation in stack "],
+            "responses": ["Push:Adds an element to the top of the stack.The element is inserted into the stack, becoming the newest item.Time complexity: O(1) (constant time). "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "pop-operation-in-stack",
+            "patterns": ["How do you define pop operation in stack", "what is pop operation in stack", "Give me a brief description of pop operation in stack ", "pop operation in stack", "explain the term pop operation in stack "],
+            "responses": ["Pop:Removes and returns the element at the top of the stack.The top element is removed from the stack.Time complexity: O(1) (constant time). "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "peek-operation-in-stack",
+            "patterns": ["How do you define peek operation in stack", "what is peek operation in stack", "Give me a brief description of peek operation in stack ", "peek operation in stack", "explain the term peek operation in stack "],
+            "responses": ["Peek (or Top):Returns the element at the top of the stack without removing it.Allows accessing the top element without modifying the stack.Time complexity: O(1) (constant time). "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "isEmpty-operation-in-stack",
+            "patterns": ["How do you define isEmpty operation in stack", "what is isEmpty operation in stack", "Give me a brief description of isEmpty operation in stack ", "isEmpty operation in stack", "explain the term isEmpty operation in stack "],
+            "responses": ["IsEmpty:Checks whether the stack is empty or not.Returns true if the stack contains no elements, false otherwise.Time complexity: O(1) (constant time). "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "isFull-operation-in-stack",
+            "patterns": ["How do you define isFull operation in stack", "what is isFull operation in stack", "Give me a brief description of isFull operation in stack ", "isFull operation in stack", "explain the term isFull operation in stack "],
+            "responses": ["IsFull (for bounded stacks):Checks whether the stack has reached its maximum capacity.Applicable only for bounded stacks implemented with fixed-size arrays.Time complexity: O(1) (constant time). "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "stack",
+            "patterns": ["How do you define stack", "what is stack data structure", "Give me a brief description of stack ", "stack", "explain the term stack "],
+            "responses": ["A stack is a fundamental abstract data type that represents a collection of elements with two main operations: enstack and destack.It follows the First In, First Out (FIFO) principle, meaning the element that is added first is the one to be removed first. ",
+			  "stacks are linear data structures that organize elements in a sequential order.Elements are added to the rear/end of the stack and removed from the front/beginning of the stack.  ",
+			   "stacks can dynamically grow or shrink during program execution to accommodate the addition or removal of elements. Memory allocation for stack elements is typically done dynamically.",
+			    " A stack data structure can be likened to a line or stack of people waiting for a service, such as waiting in line at a ticket counter or a checkout line at a store",
+				 "Just as people join the line at the rear and are served from the front, elements are added to the rear of the stack and removed from the front. "],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "application-of-queue",
+            "patterns": ["How do you define application of queue", "what are the application of queue", "Give me a brief description of application of queue ", "application of queue", "explain the term application of queue"],
+            "responses": ["Queues are widely used in operating systems for process scheduling algorithms such as First Come, First Served (FCFS), Shortest Job Next (SJN), and Round Robin.Processes waiting to be executed are placed in a queue, and the CPU selects and executes processes based on the scheduling algorithm. ",
+        "BFS traversal of graphs utilizes queues to visit nodes in level order, exploring all nodes at the current level before moving to the next level Nodes are added to the queue as they are visited, and then dequeued and processed in the order they were added.",
+        "Queues are used in buffer management systems to manage data transmission between different components, such as in networking and I/O operations.Data packets or requests are stored in a queue before being processed or transmitted, ensuring efficient data flow.",
+        "Queues are employed in task scheduling systems to manage the execution of tasks or jobs in various applications, including job scheduling in batch processing systems.Tasks are placed in a queue, and the scheduler selects and executes tasks based on priority or other criteria.",
+        "Print spooling systems use queues to manage print jobs submitted by users to a printer.Print jobs are stored in a queue, allowing the printer to process and print documents in the order they were submitted.",
+        "Queue-based transaction processing systems manage and process transactions in banking, finance, and e-commerce applications.",
+        "Queues are used in simulation and modeling scenarios to represent waiting lines or queues of entities, such as customers waiting in line at a service counter or vehicles at a toll booth."],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "operation-in-queue",
+            "patterns": ["How do you define operation in queue", "what are the operation of queue", "Give me a brief description of operation of queue ", "operations of queue", "explain the operation of queue"],
+            "responses": ["Operations on a queue involve manipulating the elements stored in the queue according to the  principle the operation are Enqueue:Adds an element in front Dequeue: remove the end element peek:display the top element isEmpty:check the queue is empty or not isFull: check the queue is full or not "
+			   ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "enqueue-operation-in-stack",
+            "patterns": ["How do you define enqueue operation in queue", "what is enqueue operation in queue", "Give me a brief description of enqueue operation in queue ", "enqueue operation in queue", "explain the term enqueue operation in queue "],
+            "responses": ["Enqueue:Adds an element to the rear/end of the queue.The element is inserted into the queue, becoming the newest item.Time complexity: O(1) (constant time)."
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "dequeue-operation-in-queue",
+            "patterns": ["How do you define dequeue operation in queue", "what is dequeue operation in queue", "Give me a brief description of dequeue operation in queue ", "dequeue operation in queue", "explain the term dequeue operation in queue "],
+            "responses": ["Dequeue:Removes and returns the element from the front/beginning of the queue.The front element is removed from the queue.Time complexity: O(1) (constant time) "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "peek-operation-in-queue",
+            "patterns": ["How do you define peek operation in queue", "what is peek operation in queue", "Give me a brief description of peek operation in queue ", "peek operation in queue", "explain the term peek operation in queue "],
+            "responses": ["Peek (or Top):Returns the element at the front of the queue without removing it.Allows accessing the top element without modifying the queue.Time complexity: O(1) (constant time). "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "isEmpty-operation-in-queue",
+            "patterns": ["How do you define isEmpty operation in queue", "what is isEmpty operation in queue", "Give me a brief description of isEmpty operation in queue ", "isEmpty operation in queue", "explain the term isEmpty operation in queue "],
+            "responses": ["IsEmpty:Checks whether the queue is empty or not.Returns true if the queue contains no elements, false otherwise.Time complexity: O(1) (constant time). "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "isFull-operation-in-queue",
+            "patterns": ["How do you define isFull operation in queue", "what is isFull operation in queue", "Give me a brief description of isFull operation in queue ", "isFull operation in queue", "explain the term isFull operation in queue "],
+            "responses": ["IsFull (for bounded stacks):Checks whether the queue has reached its maximum capacity.Applicable only for bounded queue implemented with fixed-size arrays.Time complexity: O(1) (constant time). "
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "types-of-queue",
+            "patterns": ["How do you define types of queue", "what are the type of queue", "Give me a brief description of types of queue ", "types of queue", "explain the term types of queue "],
+            "responses": [" There are several types of queues, each tailored to specific requirements and scenarios. Here are some common types of queues: Linear Queue:A linear queue is the most basic type of queue, where elements are stored in a linear manner, similar to a line of people waiting for a service.Circular Queue: A circular queue is an extension of the linear queue, where the rear/end and front/beginning of the queue are connected in a circular manner.Priority Queue: A priority queue is a specialized type of queue where elements are dequeued based on their priority rather than the order of insertion.Double-ended Queue (Deque): A deque is a versatile data structure that supports insertion and deletion of elements from both the front and rear ends Priority Blocking Queue: A priority blocking queue combines the features of a priority queue and a blocking queue."
+			  ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "Linear-queue",
+            "patterns": ["How do you define Linear queue", "what is Linear queue", "Give me a brief description of Linear queue", "Linear queue", "explain the term Linear queue"],
+            "responses": ["A linear queue is the most basic type of queue, where elements are stored in a linear manner, similar to a line of people waiting for a service.New elements are added at the rear/end of the queue, and elements are removed from the front/beginning of the queue. ",
+			  " Linear queues are implemented using data structures such as arrays or linked lists. "
+			   ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "circular-queue",
+            "patterns": ["How do you define circular queue", "what is circular queue", "Give me a brief description of circular queue", "circular queue", "explain the term circular queue"],
+            "responses": ["A circular queue is an extension of the linear queue, where the rear/end and front/beginning of the queue are connected in a circular manner. When the end of the underlying array or linked list is reached, new elements can wrap around to the beginning of the queue, allowing for efficient space utilization.",
+			  " Circular queues avoid the need for shifting elements during enqueue and dequeue operations, resulting in improved performance for certain scenarios. "
+			   ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "priority-queue",
+            "patterns": ["How do you define priority queue", "what is priority queue", "Give me a brief description of priority queue", "priority queue", "explain the term priority queue"],
+            "responses": ["A priority queue is a specialized type of queue where elements are dequeued based on their priority rather than the order of insertion.Elements with higher priority are dequeued before those with lower priority, allowing for the efficient processing of tasks based on their importance.",
+			  " Priority queues are commonly implemented using binary heaps, self-balancing binary search trees, or other priority queue data structures. "
+			   ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "Double-ended-queue",
+            "patterns": ["How do you define Deque queue", "what is Deque queue", "Give me a brief description of Deque queue", "Deque queue", "explain the term Deque queue"],
+            "responses": ["A deque is a versatile data structure that supports insertion and deletion of elements from both the front and rear ends.Unlike traditional queues, deques allow for insertion and removal of elements at both ends, providing flexibility in various scenarios such as implementing stacks or efficiently managing data."
+			   ],
+            "context": [""]
+        }
+        ,
+		{
+            "tag": "Priority-queue",
+            "patterns": ["How do you define Priority queue", "what is Priority queue", "Give me a brief description of Priority queue", "Priority queue", "explain the term Priority queue"],
+            "responses": ["A priority blocking queue combines the features of a priority queue and a blocking queue.Elements in a priority blocking queue are dequeued based on their priority, and the queue blocks when attempting to dequeue from an empty queue or enqueue into a full queue.",
+            "Priority blocking queues are useful for managing tasks or events with varying priorities in multi-threaded applications."
+			   ],
+            "context": [""]
+        }
     ]
 }
