@@ -424,6 +424,173 @@
 			  " sorting can be done in any of ascending or descending order "
 			  ],
             "context": [""]
-        }
+        },
+     
+                {
+                "tag": "Sorting",
+                "patterns": ["What is Sorting","Sorting","sorting","sort"],
+                "responses": ["A Sorting Algorithm is used to rearrange a given array or list of elements according to a comparison operator on the elements. The comparison operator is used to decide the new order of elements in the respective data structure.",
+                    "There are numerous sorting algorithms, each with its own advantages and disadvantages in terms of time complexity, space complexity, stability, and adaptability to different types of data. Some common sorting algorithms include Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort, and Heap Sort. The choice of sorting algorithm depends on factors such as the size of the dataset, the distribution of data, and performance requirements."],
+                "context": [""]
+            },
+            {
+                "tag": "Bubble Sort",
+                "patterns": ["Bubble Sort", "What is Bubble Sort","Bubble Sorting","Define Bubble Sort"],
+                "responses": ["Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. The algorithm gets its name because smaller elements 'bubble' to the top of the list with each pass.",
+                    "This algorithm has a time complexity of O(n^2) in the worst case, making it inefficient on large lists. However, it's quite simple and easy to understand, which makes it useful for educational purposes or for sorting small lists where efficiency is not a primary concern."],
+                "context": [""]
+            },
+            {
+                "tag": "Bubble Sort",
+                "patterns": ["Time Complexity of Bubble Sort","What is Time Complexity of Bubble Sort"],
+                "responses": ["Bubble Sort algorithm has a time complexity of O(n^2) in the worst case, making it inefficient on large lists. However, it's quite simple and easy to understand, which makes it useful for educational purposes or for sorting small lists where efficiency is not a primary concern."],
+                "context": [""]
+            },
+            {
+                "tag": "Bucket Sort",
+                "patterns": ["Bucket Sort", "Define Bucket Sort","What is Bucket Sort"],
+                "responses": ["Bucket Sort is a distribution sort algorithm that divides the input array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or recursively applying the bucket sort algorithm. After all the individual buckets are sorted, the buckets are concatenated to produce the final sorted array.","the overall time complexity of Bucket Sort is approximately O(n + k * (m^2)), where n is the number of elements in the input array and k is the number of buckets."],
+                "context": [""]
+            },
+            {
+                "tag": "Bucket Sort",
+                "patterns": ["Time Complexity of Bucket Sort","What is Time Complexity of Bucket Sort"],
+                "responses": ["The overall time complexity of Bucket Sort is approximately O(n + k * (m^2)), where n is the number of elements in the input array and k is the number of buckets."],
+                "context": [""]
+            },
+            {
+                "tag": "Counting Sort",
+                "patterns": ["Counting Sort", "What is Counting Sort", "Define Counting Sort","counting sort"],
+                "responses": ["Counting Sort is an efficient integer sorting algorithm that works well when the range of input values is small compared to the number of elements in the array. It's a non-comparison-based sorting algorithm and operates by counting the number of occurrences of each distinct element in the array.\n Counting Sort is an integer sorting algorithm that operates in linear time. Its time complexity is O(n + k), where n is the number of elements in the input array and k is the range of the non-negative integer keys."],
+                "context": [""]
+            },
+            {
+                "tag": "Counting Sort",
+                "patterns": ["Time Complexity of Counting Sort","What is Time Complexity of Counting Sort"],
+                "responses": ["Counting Sort is an integer sorting algorithm that operates in linear time. Its time complexity is O(n + k), where n is the number of elements in the input array and k is the range of the non-negative integer keys."],
+                "context": [""]
+            },
+            {
+                "tag": "Cycle Sort",
+                "patterns": ["Cycle Sort", "What is Cycle Sort","cycle sort","Define Cycle Sort"],
+                "responses": ["Cycle Sort is an in-place sorting algorithm that works well for situations where the number of swaps should be minimized. It's not a comparison-based sorting algorithm like Merge Sort or Quick Sort. Instead, it's based on the idea of minimizing the number of writes to the array. It achieves this by rotating elements to their correct positions, effectively minimizing the number of swaps.","Cycle Sort has a time complexity of O(n^2) in the worst-case scenario, but it's more efficient than many comparison-based algorithms because it minimizes the number of writes to the array."],
+                "context": [""]
+            },
+            {
+                "tag": "Cycle Sort",
+                "patterns": ["Time Complexity of Cycle Sort", "What is Time Complexity of Cycle Sort"],
+                "responses": ["Cycle Sort has a time complexity of O(n^2) in the worst-case scenario, but it's more efficient than many comparison-based algorithms because it minimizes the number of writes to the array."],
+                "context": [""]
+            },
+            {
+                "tag": "Heap Sort",
+                "patterns": ["Heap Sort","What is Heap Sort","Define Heap Sort"],
+                "responses": ["Heap Sort is a comparison-based sorting algorithm that operates by first building a heap from the input array and then repeatedly removing the largest (for a max-heap) or smallest (for a min-heap) element from the heap and placing it at the end of the sorted array. The heap is then adjusted to maintain its heap property, and the process is repeated until the heap is empty.","Heap Sort has a time complexity of O(n log n) in all cases, where n is the number of elements in the input array."],
+                "context": [" "]
+            },
+            {
+                "tag": "Heap Sort",
+                "patterns": ["What is Time Complexity of Heap Sort","Time Complexity of Heap Sort"],
+                "responses": ["Heap Sort has a time complexity of O(n log n) in all cases, where n is the number of elements in the input array."],
+                "context": [" "]
+            },
+            {
+                "tag": "Insertion Sort",
+                "patterns": ["Insertion Sort", "What is Insertion Sort","insertion sort","Define Insertion Sort"],
+                "responses": ["Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time. It's efficient for small data sets and usually performs well when the input array is nearly sorted.","Insertion Sort has a time complexity of O(n^2) in the worst-case scenario, where n is the number of elements in the input array. However, it can have a best-case time complexity of O(n) when the array is already sorted"],
+                "context": [""]
+            },
+            {
+                "tag": "Insertion Sort",
+                "patterns": ["What is time Complexity of Insertion Sort", "Time Complexity of Insertion Sort"],
+                "responses": ["Insertion Sort has a time complexity of O(n^2) in the worst-case scenario, where n is the number of elements in the input array. However, it can have a best-case time complexity of O(n) when the array is already sorted"],
+                "context": [""]
+            },
+            {
+                "tag": "Merge Sort",
+                "patterns": ["Merge Sort","What is Merge Sort","Define Merge Sort"],
+                "responses": ["Merge Sort is a comparison-based sorting algorithm that follows the divide-and-conquer strategy. It works by dividing the input array into two halves, recursively sorting each half, and then merging the sorted halves to produce the final sorted array.","Merge Sort has a time complexity of O(n log n) in all cases, where n is the number of elements in the input array. It's a stable sorting algorithm, meaning it preserves the relative order of equal elements."],
+                "context": [" "]
+            },
+            {
+                "tag": "Merge Sort",
+                "patterns": ["What is time complexity of Merge Sort","time complexity of Merge Sort"],
+                "responses": ["Merge Sort has a time complexity of O(n log n) in all cases, where n is the number of elements in the input array. It's a stable sorting algorithm, meaning it preserves the relative order of equal elements."],
+                "context": [" "]
+            },
+            {
+                "tag": "Odd Even Sort",
+                "patterns": ["Odd-Even Sort","What is Odd Even Sort","Define Odd Even Sort"],
+                "responses": ["Odd-Even Sort, also known as Brick Sort, is a variation of the Bubble Sort algorithm. It's particularly effective for parallel computing because it can be easily parallelized.","Odd-Even Sort has a time complexity of O(n^2) in the worst case, where n is the number of elements in the array. However, it can perform better than Bubble Sort in certain scenarios because it parallelizes well, allowing multiple pairwise comparisons to occur simultaneously."],
+                "context": [" "]
+            },
+            {
+                "tag": "Odd Even Sort",
+                "patterns": ["What is time complexity of Odd-Even Sort","time complexity of Odd-Even Sort"],
+                "responses": ["Odd-Even Sort has a time complexity of O(n^2) in the worst case, where n is the number of elements in the array. However, it can perform better than Bubble Sort in certain scenarios because it parallelizes well, allowing multiple pairwise comparisons to occur simultaneously."],
+                "context": [" "]
+            },
+            {
+                "tag": "Quick Sort",
+                "patterns": ["Quick Sort","What is Quick Sort","Define Quick Sort"],
+                "responses": ["Quick Sort is a widely used comparison-based sorting algorithm that follows the divide-and-conquer strategy. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted independently.","Quick Sort has a time complexity of O(n log n) in the average and best cases, making it one of the fastest sorting algorithms. However, in the worst-case scenario, its time complexity is O(n^2), which occurs when the pivot is consistently chosen as the smallest or largest element."],
+                "context": [" "]
+            },
+            {
+                "tag": "Quick Sort",
+                "patterns": ["What is Time Complexity of Quick Sort","Time Complexity of Quick Sort"],
+                "responses": ["Quick Sort has a time complexity of O(n log n) in the average and best cases, making it one of the fastest sorting algorithms. However, in the worst-case scenario, its time complexity is O(n^2), which occurs when the pivot is consistently chosen as the smallest or largest element."],
+                "context": [" "]
+            },
+            {
+                "tag": "Selection Sort",
+                "patterns": ["Selection Sort","What is Selection Sort","Define Selection Sort"],
+                "responses": ["Selection Sort is a simple comparison-based sorting algorithm. It works by repeatedly selecting the smallest (or largest, depending on the sorting order) element from the unsorted portion of the array and moving it to the beginning of the sorted portion.","Selection Sort has a time complexity of O(n^2) in all cases, making it inefficient for large lists. However, it's quite simple and easy to implement."],
+                "context": [" "]
+            },
+            {
+                "tag": "Selection Sort",
+                "patterns": ["What is Time Complexity of Selection Sort","Time Complexity of Selection Sort"],
+                "responses": ["Selection Sort has a time complexity of O(n^2) in all cases, making it inefficient for large lists. However, it's quite simple and easy to implement."],
+                "context": [" "]
+            },
+            {
+                "tag": "Linear Search",
+                "patterns": ["What is Linear Search","Define Linear Search","Linear Search"],
+                "responses": ["Linear search is a simple searching algorithm that sequentially checks each element in a list or array until the desired element is found or the end of the list is reached. It starts from the beginning of the list and compares each element with the target element until a match is found. If the target element is found, the index of the element is returned; otherwise, if the end of the list is reached without finding the target, it returns a 'not found' indication.",
+            "Linear Search is defined as a sequential search algorithm that starts at one end and goes through each element of a list until the desired element is found, otherwise the search continues till the end of the data set."],
+                "context": [" "]
+            },
+            {
+                "tag":"Linear Search",
+                "patterns": ["Time Complexity of Linear Search","What is time Complexity of Linear Search"],
+                "responses": ["Linear search has a time complexity of O(n), where n is the number of elements in the list. While it is straightforward, it may not be the most efficient for large datasets compared to other search algorithms like binary search, which requires the list to be sorted but has a time complexity of O(log n)."],
+                "context":[""]
+            },
+            {
+                "tag": "Binary Search",
+                "patterns": ["What is Binary Search","Define Binary Search","Binary Search","binary search"],
+                "responses": ["Binary search is a more efficient searching algorithm compared to linear search, especially for sorted lists or arrays. It works by repeatedly dividing the search interval in half. It starts by comparing the target element with the middle element of the sorted list. If the target element matches the middle element, the search is successful. If the target element is less than the middle element, the search continues in the lower half of the list. Similarly, if the target element is greater than the middle element, the search continues in the upper half of the list. This process repeats until the target element is found or the search interval becomes empty."],
+                "context": [" "]
+            },
+            {
+                "tag": "Binary Search",
+                "patterns": ["What is Time Complexity of Binary Search","time complexity of  Binary Search","Binary Search time complexity","time complexity binary search"],
+                "responses": [" Binary search has a time complexity of O(log n), where n is the number of elements in the list. This makes it much faster than linear search for large datasets, especially when the list is sorted. However, binary search requires the list to be sorted beforehand."],
+                "context": [" "]
+            },
+            {
+                "tag": "BFS",
+                "patterns": ["What is BFS","Breadth First Search","Define BFS","breadth-first search"],
+                "responses": ["Breadth-first search (BFS) is a graph traversal algorithm that explores a graph level by level. It starts at a specified vertex and explores all of its neighbors at the current level before moving on to the next level.",
+                "BFS examines all its adjacent vertices (neighbors) that have not been visited yet. It enqueues these unvisited neighbors, marks them as visited, and continues the process until all reachable vertices have been explored."],
+                "context": [" "]
+            },
+            {
+                "tag": "BFS",
+                "patterns": ["What is time complexity of BFS","time complexity of Breadth First Search","Time Complexity of BFS","breadth-first search time complexity"],
+                "responses": ["The time complexity of Breadth-First Search (BFS) is O(V + E), where V is the number of vertices (nodes) and E is the number of edges in the graph being traversed."],
+                "context": [" "]
+            }
     ]
 }
