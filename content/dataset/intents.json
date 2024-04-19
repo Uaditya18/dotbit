@@ -1063,6 +1063,34 @@
             "responses": ["Implementing a greedy approach involves defining a strategy to make locally optimal choices at each step of the algorithm. The implementation typically follows these steps: first, identifying the problem and determining the criteria for making decisions; then, selecting an appropriate data structure to represent the problem and track the chosen options; next, defining a strategy or heuristic to guide the selection process based on the problem's constraints and objectives. Once these steps are established, the algorithm iteratively makes decisions, evaluating each available option and selecting the one that appears to be the most advantageous according to the chosen criteria. This process continues until a solution is found or a termination condition is met. Throughout the implementation, it's essential to ensure that the greedy choices made at each step do not lead to contradictions or violations of the problem's constraints. While greedy algorithms are relatively simple to implement and can be efficient for certain types of problems, it's crucial to verify that the resulting solution meets the desired criteria and is globally optimal if required. Testing and evaluating the algorithm's performance on different input scenarios help validate its correctness and efficiency. "
 			  ],
             "context": [""]
+        },
+        {
+            "tag": "analysis-of-algorithm",
+            "patterns": ["What is analysis of algorithm", "Analysis of Algorithm", "Give me a brief description of analysis of algorithm"],
+            "responses": ["Algorithm analysis involves creating efficient solutions to computational problems and evaluating their performance.It focuses on designing algorithms that effectively address specific challenges.The evaluation considers factors like time complexity (how long an algorithm takes to run) and space complexity (how much memory it uses)."
+			  ],
+            "context": [""]
+        },
+        {
+            "tag": "analysis-of-algorithm",
+            "patterns": ["what is big O notation", "Big O notation", "Give me a brief description of big O notation"],
+            "responses": ["Big O notation (often denoted as O(f(n))) is a powerful concept used in computer science to describe the time complexity or space complexity of algorithms. Big O notation provides an upper bound on the time taken by an algorithm in terms of the size of the input. It describes the worst-case scenario for an algorithm’s performance."
+			  ],
+            "context": [""]
+        },
+        {
+            "tag": "analysis-of-algorithm",
+            "patterns": ["what is big omega notation", "Big Omega notation", "Give me a brief description of big Omega notation"],
+            "responses": ["Big Omega (Ω) notation is a way to express the asymptotic lower bound of an algorithm’s time complexity. Big Omega Ω notation provides a lower limit on the time taken by an algorithm in terms of the size of the input. It analyzes the best-case situation for an algorithm."
+			  ],
+            "context": [""]
+        },
+        {
+            "tag": "analysis-of-algorithm",
+            "patterns": ["what is big theta notation", "Big theta notation", "Give me a brief description of big theta notation"],
+            "responses": ["Big Theta (Θ) notation, provides a tight bound on the time complexity of an algorithm. Big Theta Θ notation represents both the upper bound and the lower bound of an algorithm’s time complexity. It describes the exact growth rate of an algorithm as the input size increases."
+			  ],
+            "context": [""]
         }
     ]
 }
