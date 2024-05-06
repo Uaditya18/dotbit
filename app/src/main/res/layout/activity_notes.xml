@@ -8,10 +8,33 @@
     android:orientation="vertical"
     android:background="@color/black"
     tools:context=".notesActivity">
+    <TextView
+        android:id="@+id/textview_head"
+        android:layout_width="match_parent"
+        android:text="Notes section"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="40dp"
 
+        android:fontFamily="sans-serif-thin"
+        android:padding="8dp"
+        android:layout_margin="8sp"
+        android:background="@color/cornflower_blue"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"/>
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchview_home"
+        android:layout_below="@+id/textview_head"
+        android:layout_margin="16dp"
+        android:background="@color/gray"
+        app:queryHint="Search Hint..."
+        app:iconifiedByDefault="false"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/searchview_home"
         android:id="@+id/recycler_home"
         android:layout_margin="8dp"
         tools:ignore="ExtraText" />
