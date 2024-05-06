@@ -147,30 +147,29 @@ public class notesActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.pin:
-                if (selected_note.isPinned()){
-                    database.mainDAO().pin(selected_note.getId(),false);
-                    Toast.makeText(this, "Unpinned", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    database.mainDAO().pin(selected_note.getId(),true);
-                    Toast.makeText(this, "Pinned", Toast.LENGTH_SHORT).show();
-                }
-                notes.clear();
-                notes.addAll(database.mainDAO().getALL());
-                notesListAdapters.notifyDataSetChanged();
-                return true;
-
-            case R.id.delete:
-                database.mainDAO().delete(selected_note);
-                notes.remove(selected_note);
-                notesListAdapters.notifyDataSetChanged();
-                Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return false;
+        int itemId = item.getItemId();
+//        if (itemId == R.id.pin) {
+//            if (selected_note.isPinned()) {
+//                database.mainDAO().pin(selected_note.getId(), false);
+//                Toast.makeText(this, "Unpinned", Toast.LENGTH_SHORT).show();
+//            } else {
+//                database.mainDAO().pin(selected_note.getId(), true);
+//                Toast.makeText(this, "Pinned", Toast.LENGTH_SHORT).show();
+//            }
+//            notes.clear();
+//            notes.addAll(database.mainDAO().getALL());
+//            notesListAdapters.notifyDataSetChanged();
+//            return true;
+//        } else
+            if (itemId == R.id.delete) {
+            database.mainDAO().delete(selected_note);
+            notes.remove(selected_note);
+            notesListAdapters.notifyDataSetChanged();
+            Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            return false;
         }
-
     }
+
 }
