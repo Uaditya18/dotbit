@@ -1,0 +1,68 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Break String into Dictionary Words</h1><br>
+
+Given an English dictionary (implemented as a hashmap (word -> meaning)) and a string without spaces, output all possible combinations of valid English words that when combined, reproduce the input string.
+<br><br>
+<b>Example</b>: <br><br>
+<b>input:</b> “programmerit”<br><br>
+
+<b>output:</b> {{pro, gram, merit}, {program, merit}, {programmer, it}}
+<br><br>
+
+<b>Solution:</b><br><br>
+
+<b>Recursive implementation:</b><br><br>
+The idea is simple, we consider each prefix and search it in dictionary. If the prefix is present in dictionary, we recur for rest of the string (or suffix).<br><br>
+<pre>
+public static HashMap<String,String> getDictionary()
+{
+    HashMap<String,String> hm=new HashMap<String,String>();
+    hm.put("a","a");
+    hm.put("it","it");
+    hm.put("am","am");
+    hm.put("ram","ram");
+    hm.put("pro","pro");
+    hm.put("grammer","grammer");
+    hm.put("program","program");
+    hm.put("programmer","programmer");
+    hm.put("me","me");
+    hm.put("merit","merit");
+    return hm;
+}
+  
+public static void findWords(String s, int length, String out)
+{
+    HashMap<String,String>hm = getDictionary();
+    for (int i=1; i <= length; i++)
+    {
+        String subwords = s.substring(0, i);
+        if (hm.containsKey(subwords))
+        {
+            if (i == length)
+            {
+                out = out + subwords;
+                System.out.println(out);
+                return;
+            }
+            findWords(s.substring(i,length), length-i, out+subwords+" ");
+        }
+    }
+}
+  
+public static void main (String[] args) throws java.lang.Exception
+{
+    String s = "programmerit";
+    findWords(s,s.length(),"");
+}
+</pre></html>

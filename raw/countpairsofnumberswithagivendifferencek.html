@@ -1,0 +1,73 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Count Pairs of Numbers with a Given Difference K</h1>
+<br><br>
+Given an unsorted array and a number n, find if there exists a pair of elements in the array whose difference is n. Return count of such pairs.
+<br><br>
+Example k=4 and a[]={7,623,19,10,11,9,3,15} <br><br>
+Output should be : 6<br>
+<pre>
+Pairs can be:
+7,11
+7,3
+6,10
+19,23
+15,19
+15,11
+</pre>
+<b>Solution:</b>
+<pre>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#define MAX 1000000
+int cmpfunc (const void * a, const void * b)
+{
+   return ( *(int*)a - *(int*)b );
+}
+int main() {
+    // Enter your code here. Read input from STDIN. Print output to STDOUT /
+    int n,k;
+    int *a;
+    int count = 0;
+    int i;
+     
+    scanf("%d %d", &n,&k);
+    a = malloc(n* sizeof(*a));
+    for(i=0; i<n;i++){
+        scanf("%d",&a[i]);
+    }
+    qsort(a, n, sizeof(int), cmpfunc);
+    int l = 0;
+    int r = 0;
+    while(r < n)
+    {
+         if(a[r] - a[l] == k)
+         {
+              count++;
+              l++;
+              r++;
+        }
+         else if(a[r] - a[l] > k)
+              l++;
+         else
+              r++;
+    }
+    printf("%d",count);
+    return 0;
+}
+</pre>
+Time Complexity: O(NLogN)
+Space Complexity: O(1)
+
+</html>

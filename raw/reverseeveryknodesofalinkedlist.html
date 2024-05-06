@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Reverse every k nodes of a linked list</h1>
+<br><br>
+Given a linked list and a number k. Reverse every k nodes in the list.
+<br><br>
+Example :
+<br><br>
+Input 1->2->3->4->5->6 and k = 2
+Output 2->1->4->3->6->5
+<br><br>
+Solution : We have a pointer q which points to the head of the list initially.<br> Advance this k times in a while loop and keep reversing the list. Now q points to (k+1)th node and we call the same procedure on it.<br> This function returns the head of the reversed list.
+<br><br>
+<pre>
+struct node *reverseKNodes (struct node *head, int k)
+{
+    struct node* q = head;
+    struct node* r = NULL;
+    struct node* s;
+    int count = 0;
+     
+    while (q != NULL && count < k)
+    {
+       s = r;
+       r = q;
+       q  = q->next;
+       r->next = s;
+       count++;
+    }
+      
+    if(q !=  NULL)
+         head->next = reverseKNodes(q, k);
+  
+    return r;
+}
+</pre>
+</html>

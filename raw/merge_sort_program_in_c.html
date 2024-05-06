@@ -1,0 +1,83 @@
+<!doctype html>
+<head>
+   <style>
+      img {
+      width: 100%;
+      }
+      pre {
+      width: 100%;
+      overflow-x: scroll;
+      }
+   </style>
+</head>
+<h1>Merge Sort Program in C</h1>
+<p>Merge sort is a sorting technique based on divide and conquer technique. With worst-case time complexity being Ο(n log n), it is one of the most respected algorithms</p>
+<h2>Implementation in C</h2>
+<p>We shall see the implementation of merge sort in c programming language here &minus;</p>
+<pre class="prettyprint notranslate tryit">
+#include &lt;stdio.h&gt;
+#define max 10
+
+int a[10] = { 10, 14, 19, 26, 27, 31, 33, 35, 42, 44 };
+int b[10];
+
+
+void merging(int low, int mid, int high) {
+   int l1, l2, i;
+
+   for(l1 = low, l2 = mid + 1, i = low; l1 &lt;= mid &amp;&amp; l2 &lt;= high; i++) {
+      if(a[l1] &lt;= a[l2])
+         b[i] = a[l1++];
+      else
+         b[i] = a[l2++];
+   }
+
+   while(l1 &lt;= mid)    
+      b[i++] = a[l1++];
+
+   while(l2 &lt;= high)   
+      b[i++] = a[l2++];
+
+   for(i = low; i &lt;= high; i++)
+      a[i] = b[i];
+}
+
+void sort(int low, int high) {
+   int mid;
+   
+   if(low &lt; high) {
+      mid = (low + high) / 2;
+      sort(low, mid);
+      sort(mid+1, high);
+      merging(low, mid, high);
+   }else { 
+      return;
+   }   
+}
+
+int main() { 
+   int i;
+
+   printf("List before sorting\n");
+   
+   for(i = 0; i &lt;= max; i++)
+      printf("%d ", a[i]);
+
+   sort(0, max);
+
+   printf("\nList after sorting\n");
+   
+   for(i = 0; i &lt;= max; i++)
+      printf("%d ", a[i]);
+}
+</pre>
+<h2>Output</h2>
+<p>The output of the program should be as follows &minus;</p>
+<pre class="result notranslate">
+List before sorting
+10 14 19 26 27 31 33 35 42 44 0
+List after sorting
+0 10 14 19 26 27 31 33 35 42 44
+</pre><br><br><br><br><br><br><br>
+</body>
+</html>

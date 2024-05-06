@@ -1,0 +1,110 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Union and Intersection of two Linked Lists</h1>
+
+Given two Linked Lists, create union and intersection lists that contain union and intersection of the elements present in the given lists.<br> Order of elments in output lists doesn't matter.
+<br><br>
+Following are simple algorithms to get union and intersection lists respectively.
+<br><br>
+
+<b>Intersection (list1, list2)</b>
+<br><br>Initialize result list as NULL. Traverse list1 and look for its each element in list2, if the element is present in list2, then add the element to result.
+<br><br>
+<b>Union (list1, list2):</b>
+<br><br>Initialize result list as NULL. Traverse list1 and add all of its elements to the result.
+Traverse list2. If an element of list2 is already present in result then do not insert it to result, otherwise insert.
+<br><br>
+This method assumes that there are no duplicates in the given lists.
+<br><br>
+<pre>
+/* A utility function to insert a node */
+void insert(struct node** head_ref, int new_value);
+  
+/* A utility function to check if given value is present in a list */
+  
+bool isPresent (struct node *head, int value)
+{
+    struct node *t = head;
+    while (t != NULL)
+    {
+        if (t->value == value)
+            return 1;
+        t = t->next;
+    }
+    return 0;
+}
+  
+/* Function to get union of two linked lists head1 and head2 */
+struct node *getUnion(struct node *head1, struct node *head2)
+{
+    struct node *result = NULL;
+    struct node *t1 = head1, *t2 = head2;
+  
+    // Insert all elements of list1 to the result list
+    while (t1 != NULL)
+    {
+        insert(&result, t1->value);
+        t1 = t1->next;
+    }
+  
+    // Insert those elements of list2 which are not
+    // present in result list
+    while (t2 != NULL)
+    {
+        if (!isPresent(result, t2->value))
+            insert(&result, t2->value);
+        t2 = t2->next;
+    }
+  
+    return result;
+}
+  
+/* Function to get intersection of two linked lists
+  head1 and head2 */
+struct node *getIntersection(struct node *head1,
+                              struct node *head2)
+{
+    struct node *result = NULL;
+    struct node *t1 = head1;
+  
+    // Traverse list1 and search each element of it in
+    // list2. If the element is present in list 2, then
+    // insert the element to result
+    while (t1 != NULL)
+    {
+        if (isPresent(head2, t1->value))
+            insert (&result, t1->value);
+        t1 = t1->next;
+    }
+  
+    return result;
+}
+  
+/* A utility function to insert a node at the begining of a linked list*/
+void insert (struct node** head_ref, int new_value)
+{
+    /* allocate node */
+    struct node* new_node =
+        (struct node*) malloc(sizeof(struct node));
+  
+    /* put in the value */
+    new_node->value = new_value;
+  
+    /* link the old list off the new node */
+    new_node->next = (*head_ref);
+  
+    /* move the head to point to the new node */
+    (*head_ref) = new_node;
+}
+</pre>
+</html>

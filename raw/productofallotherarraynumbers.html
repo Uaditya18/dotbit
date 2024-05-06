@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Product of All Other Array Numbers</h1>
+
+<b>Problem:</b>
+<br><br>
+Given an array of n integers where n>1, return an array of same size an input array where at every index of the output array should contain the product of all elements in the array except the element at the given index.
+<br><br>
+<b>Example:</b>
+<pre>
+arr[] = {10, 4, 1, 6, 2}
+prod[] = {48,120,480,80,240}
+</pre>
+
+<b>Solution:</b>
+<pre>
+public int[] product_without_self(int[] arr) {
+    int[] result = new int[arr.length];
+    result[result.length-1] = 1;
+  
+    for(int i=arr.length-2; i>=0; i--) {
+        result[i] = result[i+1] * arr[i+1];
+    }
+  
+    int left = 1;
+    for(int i=0; i<arr.length; i++) {
+        result[i] *= left;
+        left *= arr[i];
+    }
+  
+    return result;
+}
+</pre>
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+</html>

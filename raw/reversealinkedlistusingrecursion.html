@@ -1,0 +1,56 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Reverse a Linked List using Recursion</h1>
+
+Problem: To test both data structure and the recursion concept, a wonderful and confusing interview question asked to experienced people is "Reverse a linked list using recursion".
+<br><br>
+Solution:
+<br><br>
+In recursive approach, we need to move to the end of the node. But must stop just before the end of the node, and we should have total 3 nodes in hand.
+head (stack) head->next (not null) head->next->next
+<br><br>
+head is what is in the stack. head->next->next will always be NULL. If it is not NULL, recursion continues. This is the base condition for our recursion.
+<br><br>
+Now, we connect head->next->next to head. and set head->next to NULL. since, we have pushed the traversed head’s in the stack.
+<br><br>
+If there is only one node, there is no need to reverse the list. So, its ok to check for head and head next both being non-NULL are not. If any one of it becomes NULL, we can return the head recorded.
+<br><br>
+<pre>
+void recursiveReverse(struct node** head_ref)
+{
+    struct node* first;
+    struct node* rest;
+ 
+    /* empty list */
+    if (*head_ref == NULL)
+       return;
+ 
+    first = *head_ref;
+    rest  = first->next;
+ 
+    /* List has only one node */
+    if (rest == NULL)
+       return;
+ 
+    /* put the first element on the end of the list */
+    recursiveReverse(&rest);
+    first->next->next  = first;
+ 
+    /* tricky step */
+    first->next  = NULL;
+ 
+    /* fix the head pointer */
+    *head_ref = rest;
+}
+</pre>
+</html>

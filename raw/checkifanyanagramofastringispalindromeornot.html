@@ -1,0 +1,49 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Check if Any Anagram of a String is Palindrome or Not</h1>
+
+<b>Example:</b><br><br>
+Input: str = “aaaad”<br>
+Output: 1<br><br>
+// “aaaad” is a anagram of a palindrome “aadaa”
+<br><br>
+Input: str = “abcd”<br><br>
+Output: 0<br><br>
+// “abcd” is not a anagram of any palindrome.
+<br><br>
+A Simple Solution is to take the input string, try every possible rotation of it and return true if a anagram is a palindrome. If no rotation is palindrome, then return false. But this approach is very lengthy and has exponential time complexity (O(n!)).
+<br><br>
+A palindrome can be broken into two halves. where in the first half is the reverse of second half. In case of odd length of strings, we have to ignore the middle character.
+<br><br>
+So for every character in the first half, there is a corresponding matching character in the second half. This indicates that all the characters in a string must occur even number of times except for one which appears in the middle of the string.
+<br><br>
+<pre>
+public static boolean checkPalindrome(String input)
+{
+        int [] count = new int[26];
+        for( int i = 0; i < input.length(); i++ )
+        {
+            char ch = input.charAt(i);
+            count[ch-'a']++;
+        }
+        int oddOccur = 0;
+        for( int cnt:count )
+        {
+            if( oddOccur > 1) // more than 1 char should have odd frequency
+                return false;
+            if( cnt%2 == 1 )
+                oddOccur++;
+        }
+        return true;
+}
+</pre></html>

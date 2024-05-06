@@ -1,0 +1,119 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>To print maximum number of As using four keys of special keyboard.</h1>
+
+Let us assume that we have a specially made keyboard which has following four keys:<br>
+Key 1:  This key prints character 'A' on the output screen<br>
+Key 2: (Ctrl-A): This keys selects the complete contents of the screen - same function as (Ctrl + A) of PC<br>
+Key 3: (Ctrl-C): This key copies the seleceted content to buffer or clipboard - same function as (Ctrl + C) of PC<br>
+Key 4: (Ctrl-V): This key appends saved contents of buffer/clipboard to the output screen. <br>
+If you are allowed to press keys of this special keyboard N times, write a program which calculates maximum numbers of As possible.<br>
+<br>
+Example -   <br>
+Input:  N = 3<br>
+Output: 3  <br>
+Maximum number of As possible with 3 keystrokes is 3 which are obtained by using following key sequence - 
+A, A, A   
+<br><br>
+Input:  N = 8  <br>
+Output: 12 <br>
+Maximum number of As possible with 8 keystrokes is 9 which are obtained by using  following key sequence -
+A, A, A, Ctrl A, Ctrl C, Ctrl V, Ctrl V, Ctrl V
+OR following keysequence also produces 12 As
+A, A, A, A, Ctrl A, Ctrl C, Ctrl V, Ctrl V
+<br><br>
+Input:  N = 12<br>
+Output: 36<br>
+Maximum number of As possible with 12 keystrokes is 36 which are obtained by using following key sequence -  
+A, A, A, A, Ctrl A, Ctrl C, Ctrl V, Ctrl V, Ctrl A, Ctrl C, Ctrl V, Ctrl V
+<br><br>
+
+<b>Algorithm/Insights</b>
+<br><br>
+If number of allowed keystrokes(N) is less than 7, then the maximum number of As possible is N. You should be able to verify this yourself. <br><br>
+
+It turns out that for N greater than or equal to 7, to produce maximum number of As, the sequence of N keystrokes that will be used will always end with a suffix of Ctrl-A, Ctrl-C, followed by all Ctrl-V's. We have to basically figure out the point(say critical-point) after which we should use this suffix of Ctrl-A, Ctrl-C, followed by all Ctrl-V's to obtain maximum number of As.<br><br>
+
+To find out this critical point for input N, we try out each of the values from N-3 to 1 and compute the number of As that are produced after making a value as critical point and then appending it with the suffix of Ctrl-A, Ctrl-C, followed by all Ctrl-V's. While computing maximum number of As possible with each trial critical point(from N-3 to 1) plus above suffix of Ctrl-A, Ctrl-C, followed by all Ctrl-V's, we use maximum number of As already computed for each value(N-3 to 1).<br><br>
+
+Say f(N) denotes the maximum number of As possible for N keystrokes. Let use see how do we compute f(N) for N = 7.  <br><br>
+
+First we choose critical point 'N_critical' as 4. We already know the value of f(4) which is 4. For remaining 3 keystrokes, we use Ctrl-A, Ctrl-C, Ctrl-V. The string of keystrokes produced will be A,A,A,A,Ctrl-A,Ctrl-C, Ctrl-V. These last 3 keystrokes essentially double the value of f(4). Hence for 'N_critical = 4', we get 8 number of As which is 2*f(4).<br><br>
+
+Now we choose critical point 'N_critical' as 3. We already know the value of f(3) which is 3. For remaining 4 keystrokes, we use Ctrl-A, Ctrl-C, Ctrl-V, Ctrl-V. The string of keystrokes produced will be A,A,A,Ctrl-A,Ctrl-C, Ctrl-V, Ctrl-V. These last 4 keystrokes essentially triple the value of f(3). Hence for 'N_critical = 3', we get 9 number of As which is 3*f(3).<br><br>
+
+Similarly, for 'N_critical' = 2, we get 4*f(2) number of As which is 8. And for 'N_critical' = 1, maximum number of As possible is 5*f(1) which is 5. <br><br>
+
+Therefore choosing 'N_critical' as 3 gives us maximum number of As. In other words, f(7) = 9. <br><br>
+
+In general,<br>
+f(N) = N if N < 7
+     = max{2*f(N-3), 3*f(N-4),..., (N-2)*f(1)}<br>
+
+The algorithm basically needs to implement the above recurrence relation where base case is defined as f(N) = N when N < 7. To avoid re-computations of same sub-problems, intermediate results are stored in an array and re-used if required. Please check out function findMaxAs(int n, int[] maxAsSolution) in code snippet for implementation details.<br><br>
+
+<b>Implementation</b>
+<pre>
+public class MaxNumberOfAs
+{
+    // assuming max input for 'n' won't be greater than 10.
+    // you might want to change it according to your need.
+    private static int MAX = 10;
+ 
+    /*
+     * f(N) = N if N < 7
+     *      = max{2*f(N-3), 3*f(N-4),..., (N-2)*f(1)}
+    */   
+    public static int findMaxAs(int n, int[] maxAsSolution)
+    {
+        // base case
+        if (n < 7) return n;
+         
+        int maxSoFar = 0, maxAsWithThis_i = 0, multiplier = 2;
+         
+        // choose the critical point which produces maximum number of As
+        for (int i = n-3; i >=0; i--)
+        {
+            // make recursive call if required
+            if (maxAsSolution[i] == -1)
+            {
+                maxAsSolution[i] = findMaxAs(i, maxAsSolution);
+            }
+             
+            maxAsWithThis_i = multiplier*maxAsSolution[i];
+             
+            if(maxAsWithThis_i > maxSoFar)
+            {
+                maxSoFar = maxAsWithThis_i;
+            }
+            multiplier +=1;
+        }
+        return maxSoFar;
+    }
+     
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        // assuming input n won't be greater than 10.
+        int [] maxAsSolution = new int[MAX]; 
+        for (int i = 0; i < maxAsSolution.length; i++)
+        {
+            // maxAsSolution[i] = -1 indicates that solution for this input  = 'i' is not computed yet.
+            maxAsSolution[i] = -1;
+        }
+         
+        // find max number of As with 8 keystrokes allowed. 
+        System.out.println("Max number of As possible with 8 keystrokes: " + findMaxAs(8, maxAsSolution));
+    }
+}
+</pre>
+</html>

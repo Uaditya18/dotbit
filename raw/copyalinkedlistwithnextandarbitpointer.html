@@ -1,0 +1,102 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+
+<h1>Copy a linked list with next and arbit pointer</h2>
+
+<b>Problem:</b> <br><br>
+Given a doubly linked list with one pointer of each node pointing to the next node just like in a singly linked list. <br>
+The second pointer(arbit pointer) however can point to any node in the list and not just the previous node. <br>
+<br>
+
+Write a program in to create a copy of this list.
+<br><br>
+original list
+<br><br>
+Algorithm:
+<br><br>
+1. The first step is to create and insert the nodes of copy list after the original node.
+<br><br>
+
+2. Now change the arbit pointer of copy list like this
+<br><br>
+temp->next->arbit = temp->arbit->next;
+<br><br>
+where temp is the node in original list and temp2 is the node in copy list)
+<br><br>
+3. Restore the original list and copy list
+<br><br>
+temp->next = temp->next->next;<br>
+temp2->next = temp2->next->next;
+<br><br>
+
+
+<h2>Implementation:</h2>
+<pre>
+struct list
+{
+    struct list *next;
+    struct list *arbit;
+    int val;
+};
+ 
+struct list *createNode(int val)
+{
+    struct list* newnode = (struct list*)malloc(sizeof(struct list));
+    newnode->val =  val;
+    newnode->next = NULL;
+    newnode->arbit = NULL;
+    return newnode;
+}
+ 
+struct list *copyList(struct list **head)
+{
+    if(*head==NULL)
+    return NULL;
+    struct list *copy_list,*temp,*temp2;
+    temp = *head;
+    //Step 1
+    while(temp!=NULL)
+    {
+         struct list* newnode = createNode(temp->val);
+         temp2 = temp->next;
+         temp->next = newnode;
+         newnode->next = temp2;
+         temp = temp->next->next;
+    }
+ 
+    temp = *head;
+ 
+    //Step 2
+    while(temp != NULL && temp->next != NULL)
+    {
+        temp->next->arbit = temp->arbit->next;
+        temp = temp->next->next;
+    }
+ 
+    //Step 3
+    temp = *head;
+    copy_list = temp->next;
+    while(temp != NULL)
+    {
+        temp2 = temp->next;
+        if(temp->next != NULL)
+            temp->next = temp->next->next;
+        if(temp2->next != NULL)
+            temp2->next = temp2->next->next;
+        temp = temp->next;
+    }
+    return copy_list;
+ }
+Time Complexity : O(N) where N is the number of nodes in list.
+
+</pre></html>

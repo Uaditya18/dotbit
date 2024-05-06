@@ -1,0 +1,55 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Move the Spaces to Front of the String</h1>
+
+<b>Problem:</b><br><br> 
+Given a string that has set of words and spaces, write a program to move the spaces to front of string, you need to traverse the array only once and need to adjust the string in place.<br><br>
+string = “move these spaces to beginning”<br>
+output =” movethesepacestobeginning”<br>
+
+<br><b>Solution:</b><br><br>
+
+1) Maintain two indices i and j.<br><br>
+2) Traverse from end to beginning.<br><br>
+If the current index contains char, swap chars in index i with index j.<br><br>
+This will move all the spaces to beginning of the array.<br><br>
+
+<b>Implementation:</b><br>
+<pre>
+#include<iostream>
+using namespace std;
+int main()
+{
+    char a[]="Move space to begining";
+    int n=strlen(a)-1,count = n;
+ 
+    //MoveSpace(a,0,strlen(a)-1);
+    for(int i=n;i>=0;i--)
+    {
+        if(a[i] != ' ')
+        a[count--] = a[i];
+    }
+     
+    while(count>=0)
+        a[count--] = ' ';
+    cout << "After Space Moved to Begining" << a << endl;
+ 
+    return 0;
+
+	}
+</pre>
+<br>
+Time Complexity: O(n) where n is the number of characters in input array.
+<br><br>
+Space Complexity: O(1).
+</html>

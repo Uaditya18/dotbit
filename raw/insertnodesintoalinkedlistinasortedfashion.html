@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Insert nodes into a linked list in a sorted fashion</h1>
+
+<br><br>
+The solution is to iterate down the list looking for the correct place to insert the new node. That could be the end of the list, or a point just before a node which is larger than the new node.
+<br><br>
+Note that we assume the memory for the new node has already been allocated and a pointer to that memory is being passed to this function.
+<br><br>
+<pre>
+void listInsertSorted(struct node** head, struct node* newNode)
+{
+  // Special case for the head end
+  if (*head == NULL || (*head)->data >= newNode->data)
+  {
+     newNode->next = *head;
+     *head = newNode;
+  }
+  else
+  {
+     // Locate the node before which the insertion is to happen!
+     struct node* current = *head;
+     while(current->next!=NULL && current->next->data < newNode->data)
+     {
+        current = current->next;
+     }
+     newNode->next = current->next;
+     current->next = newNode;
+   }
+}
+Complexity
+
+Time O(N)
+ 
+</pre>
+</html>

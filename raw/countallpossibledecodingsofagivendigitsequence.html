@@ -1,0 +1,166 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Count all possible decodings of a given digit sequence</h1>
+
+<b>Introduction</b>
+<br><br>
+Let's say there is an encoding scheme where integer 1 encodes character 'A', integer 2 encodes character 'B' and so on till integer 26 which encodes character 'Z'. With this encoding scheme, write a program to count all possible decodings of a given digit sequence.
+<br><br>
+For example, if the digit sequence is "12" then there are two possible decodings for this  -  One of them is 'AB' when we decode 1 as 'A' and 2 as 'B'. Now we can also decode this digit sequence "12" as 'L' when we decode digits 1 and 2 taken together as an integer 12.
+Similarly, for digit sequence "1223" there are five possible decodings.<br>
+1, 2, 2, 3 - ABBC<br>
+1, 2, 23   - ABW<br>
+1, 22, 3   - AVC<br>
+12, 2, 3   - LBC<br>
+12, 23     - LW<br>
+<br>
+For digit sequence "1234" there are three possible decodings.<br>
+1, 2, 3, 4 - ABCD<br>
+1, 23, 4   - AWD<br>
+12, 3, 4   - LBD<br>
+Note that because integer 34 does not have any valid decoding, we cannot decode "1234" as 1,2,34 or as 12,34 where digits 3 and 4 are decoded together(as an integer 34) to some character.
+<br><br>
+Few assumptions that we can make here - <br>
+1. Number of possible decodings for an empty sequence = 0.<br>
+2. There would be no 0's at the very beginning of digit sequence. That means, no digit sequence would start from digit 0.<br>
+3. There would be no two or more consecutive 0's in the digit sequence.  <br>
+4. The digit sequence would be formed by only using digits from 0-9.
+<br><br>
+
+<b>Algorithm/Insights</b>
+<br><br>
+The algorithm to solve this problem is recursive in nature. Let the function that implements this algorithm be 'countPossibleDecodings(int n, int[] digitSequence)' where 'n' denotes the number of digits already included from digitSequence while counting number of possible decodings. Therefore, in 'countPossibleDecodings(int n, int[] digitSequence)' we are essentially counting number of decodings possible for digit sequence starting at index 'n+1' and ending at index (digitSequence.length-1) in digitSequence array. Therefore the initial call to this function is made with n = -1 (countPossibleDecodings(-1, digitSequence)).
+<br><br>
+Now in the function countPossibleDecodings(int n, int[] digitSequence)
+<br><br>
+1. If 'n' is equal to (digitSequence.length-2) then that means there is only one digit to count possible decodings for. In this case only 1 decoding is possible and hence we return 1.
+<br><br>
+2. If 'n' is equal to (digitSequence.length-1) then that means there are no digits to count possible decodings for and hence we return 1 as per the assumption - number of decodings for an empty sequence = 1.
+<br><br>
+Step #1 and #2 are base cases for this recursive algorithm.
+<br><br>
+3. Now remember that in countPossibleDecodings(int n, int[] digitSequence), we are computing total number of decodings for digitSequence starting at index 'n+1' and ending at the end of the sequence. If digit at index 'n+1' is greater than 0 then that digit could be decoded and appended with all possible decodings of digitSequence starting at index 'n+2' and ending at the end of the sequence. Therefore total number of decodings possible by decoding digit at index 'n+1' are counted by making a recursive call countPossibleDecodings(n+1, digitSequence).
+<br><br>
+4. In the call countPossibleDecodings(int n, int[] digitSequence), in above step we chose to decode digit at index 'n+1' and append it with all possible decodings for digitSequence from index 'n+2' to end of the sequence. We could have also chosen to decode two digits taken at once that is digit at index 'n+1' and digit at index 'n+2' if they form a valid two digit integer which is greater than 10 and less than 27(only in this case we get different and valid decodings). To count the number of such decodings possible, we check if integer formed using digits at indices 'n+1' and 'n+2' is a valid integer and then make a recursive call countPossibleDecodings(n+2, digitSequence).
+<br><br>
+Please checkout following function call tree for digitSequence "1223" which shows how the recursive calls are made starting from n=-1 and what are the values returned from each function call.
+<img src="possibledecodings_0.gif" alt="possibledecodings_0" />
+<br><br>
+The time complexity for this algorithm is O(2^n) as can be easily seen from the number of function calls in above function call tree. Please checkout function countPossibleDecodings(int n, int[] digitSequence) for implementation details.
+<img src="possibledecodings_1.gif" alt="possibledecodings_1" />
+<br><br>
+Now as you can observe in the above function call tree, we are doing redundant computations for n=1, n=2 and n=3. To avoid these redundant computations, we store the computed values in an array and use these stored values if needed at a later stage of the algorithm. With this optimization, we need to compute all possible decodings only once for each value of 'n'. Time complexity therefore is reduced to O(n) with extra space usage of O(n). Please checkout function countPossibleDecodings(int n, int[] digitSequence, int[] decodings) for implementation details.
+<br><br>
+
+<b>Implementation</b>
+<pre>
+public class CountPossibleDecodings 
+{
+    private boolean validDecoding(int digit0, int digit1)
+    {
+        if ((10*digit0 + digit1) >= 10 && ((10*digit0 + digit1) < 27))
+        {
+            return true;
+        }
+         
+        return false;
+    }
+     
+    public int countPossibleDecodings(int n, int[] digitSequence, int[] decodings)
+    {
+        // n denotes the length of the digit array that's already been used
+ 
+        // if n is (digit.length - 1) then all the digits are already used
+        // if n is (digit.length - 2) then all the digits except the last one are already used
+        // in both cases only one valid decoded sequence is possible
+        if (n == digitSequence.length - 1 || n == digitSequence.length - 2)
+        {
+            // store the computed value to avoid re-computations
+            // need to consider special case when we have sequence of length 0 or length 1 
+            if (n != -1)
+            {
+                decodings[n] = 1;
+            }
+             
+            return 1;
+        }
+         
+        int count = 0;
+         
+        // count number of decodings by using digit at index 'n+1'
+        if (digitSequence[n+1] > 0)
+        {
+            count = (decodings[n+1] != 0) ? decodings[n+1] : 
+                                            countPossibleDecodings(n+1, digitSequence, decodings);
+        }
+         
+        // count number of decodings by using next two digits at once
+        if (validDecoding(digitSequence[n+1], digitSequence[n+2]))
+        {
+            count += (decodings[n+2] != 0) ? decodings[n+2] : 
+                                             countPossibleDecodings(n+2, digitSequence, decodings);
+        }
+         
+        // store the computed value to avoid re-computations
+        // need to consider special case with n = -1 for the initial call 
+        if (n != -1)
+        {
+            decodings[n] = count;
+        }
+         
+        return count;
+    }
+ 
+     
+    public int countPossibleDecodings(int n, int[] digitSequence)
+    {
+        // n denotes the length of the digit array that's already been used
+ 
+        // if n is (digit.length - 1) then all the digits are already used
+        // if n is (digit.length - 2) then all the digits except the last one are already used
+        // in both cases only one valid decoded sequence is possible
+        if (n == digitSequence.length - 1 || n == digitSequence.length - 2)
+        {
+            return 1;
+        }
+         
+        int count = 0;
+         
+        // count number of decodings by using digit at index 'n+1'
+        if (digitSequence[n+1] > 0)
+        {
+            count = countPossibleDecodings(n+1, digitSequence);
+        }
+         
+        // count number of decodings by using next two digits at once
+        if (validDecoding(digitSequence[n+1], digitSequence[n+2]))
+        {
+            count += countPossibleDecodings(n+2, digitSequence);
+        }
+         
+        return count;
+    }
+     
+     
+    public static void main(String[] args) 
+    {
+        int[] digit = {1,2,2,3};
+         
+        CountPossibleDecodings solution = new CountPossibleDecodings();
+         
+        int[] decodings = new int[digit.length];
+        System.out.println("number of possible decodings:\n"+solution.countPossibleDecodings(-1, digit, decodings));
+    }
+}
+</pre>
+</html>

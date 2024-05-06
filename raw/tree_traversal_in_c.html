@@ -1,0 +1,179 @@
+<!doctype html>
+<head>
+   <style>
+      img {
+      width: 100%;
+      }
+      pre {
+      width: 100%;
+      overflow-x: scroll;
+      }
+   </style>
+</head>
+<h1>Tree Traversal in C</h1>
+<p>Traversal is a process to visit all the nodes of a tree and may print their values too. Because, all nodes are connected via edges (links) we always start from the root (head) node. That is, we cannot random access a node in tree. There are three ways which we use to traverse a tree &minus;</p>
+<ul class="list">
+<li>In-order Traversal</li>
+<li>Pre-order Traversal</li>
+<li>Post-order Traversal</li>
+</ul>
+<p>We shall now see the implementation of tree traversal in C programming language here using the below given binary tree &minus;</p>
+<img src="binary_search_tree.jpg" alt="Binary Search Tree" />
+<h2>Implementation in C</h2>
+<pre class="prettyprint notranslate tryit">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node {
+   int data; 
+	
+   struct node *leftChild;
+   struct node *rightChild;
+};
+
+struct node *root = NULL;
+
+void insert(int data) {
+   struct node *tempNode = (struct node*) malloc(sizeof(struct node));
+   struct node *current;
+   struct node *parent;
+
+   tempNode-&gt;data = data;
+   tempNode-&gt;leftChild = NULL;
+   tempNode-&gt;rightChild = NULL;
+
+   //if tree is empty
+   if(root == NULL) {
+      root = tempNode;
+   }else {
+      current = root;
+      parent = NULL;
+
+      while(1) { 
+         parent = current;
+         
+         //go to left of the tree
+         if(data &lt; parent-&gt;data) {
+            current = current-&gt;leftChild;                
+            
+            //insert to the left
+            if(current == NULL) {
+               parent-&gt;leftChild = tempNode;
+               return;
+            }
+         }//go to right of the tree
+         else {
+            current = current-&gt;rightChild;
+
+            //insert to the right
+            if(current == NULL) {
+               parent-&gt;rightChild = tempNode;
+               return;
+            }
+         }
+      }            
+   }
+}
+
+struct node* search(int data) {
+   struct node *current = root;
+   printf("Visiting elements: ");
+
+   while(current-&gt;data != data) {
+      if(current != NULL)
+         printf("%d ",current-&gt;data); 
+
+      //go to left tree
+      if(current-&gt;data &gt; data) {
+         current = current-&gt;leftChild;
+      }
+      //else go to right tree
+      else {                
+         current = current-&gt;rightChild;
+      }
+
+      //not found
+      if(current == NULL) {
+         return NULL;
+      }
+   }
+   
+   return current;
+}
+
+void <b>pre_order_traversal</b>(struct node* root) {
+   if(root != NULL) {
+      printf("%d ",root-&gt;data);
+      pre_order_traversal(root-&gt;leftChild);
+      pre_order_traversal(root-&gt;rightChild);
+   }
+}
+
+void <b>inorder_traversal</b>(struct node* root) {
+   if(root != NULL) {
+      inorder_traversal(root-&gt;leftChild);
+      printf("%d ",root-&gt;data);          
+      inorder_traversal(root-&gt;rightChild);
+   }
+}
+
+void <b>post_order_traversal</b>(struct node* root) {
+   if(root != NULL) {
+      post_order_traversal(root-&gt;leftChild);
+      post_order_traversal(root-&gt;rightChild);
+      printf("%d ", root-&gt;data);
+   }
+}
+
+int main() {
+   int i;
+   int array[7] = { 27, 14, 35, 10, 19, 31, 42 };
+
+   for(i = 0; i &lt; 7; i++)
+      insert(array[i]);
+
+   i = 31;
+   struct node * temp = search(i);
+
+   if(temp != NULL) {
+      printf("[%d] Element found.", temp-&gt;data);
+      printf("\n");
+   }else {
+      printf("[ x ] Element not found (%d).\n", i);
+   }
+
+   i = 15;
+   temp = search(i);
+
+   if(temp != NULL) {
+      printf("[%d] Element found.", temp-&gt;data);
+      printf("\n");
+   }else {
+      printf("[ x ] Element not found (%d).\n", i);
+   }            
+
+   printf("\nPreorder traversal: ");
+   pre_order_traversal(root);
+
+   printf("\nInorder traversal: ");
+   inorder_traversal(root);
+
+   printf("\nPost order traversal: ");
+   post_order_traversal(root);       
+
+   return 0;
+}
+</pre>
+<p>If we compile and run the above program then it would produce following result &minus;</p>
+<h2>Output</h2>
+<pre class="result notranslate">
+Visiting elements: 27 -> 35 -> [31] Element found.
+Visiting elements: 27 -> 14 -> 19 -> [ x ] Element not found (15).
+
+Preorder traversal: 27 14 10 19 35 31 42
+Inorder traversal: 10 14 19 27 31 35 42
+Post order traversal: 10 19 14 31 42 35 27
+</pre>
+<br><br><br><br><br><br><br>
+</body>
+</html>

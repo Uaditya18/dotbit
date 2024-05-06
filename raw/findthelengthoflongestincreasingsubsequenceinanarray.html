@@ -1,0 +1,142 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Find the length of longest increasing subsequence in an array</h1>
+
+Find the length of longest increasing subsequence in an array.<br>
+Example:<br>
+For input array:  {12, 18, 7, 34, 30, 28, 90, 88}<br>
+length of longest increasing subsequence is 4.<br>
+<br>
+<b>Algorithm/Insights</b>
+<br><br>
+This problem can be solved by applying dynamic programming strategy as explained below:<br>
+1. Create an array lisLength, of length same as input array length, to store longest increasing subsequence defined as:<br>
+   lisLength[i] = length of longest increasing subsequence in the array [0..i] including ith element<br>
+2. Initialize lisLength[i] to 1.<br>
+3. The lisLength array is then updated one element by element:<br>
+   lisLength[i] = Max(lisLength[j]) + 1, for all values of j where input[j] < input[i] and j < i
+<br><br>
+How this works:<br>
+For j = 0 to i-1, if input[j] < input[i], then input[i] can be added to the longest increasing subsequence which is formed from array elements 0 to j.<br>
+Therefore, to find longest increasing subsequence in 0..i, lisLength[i], we need the Max(lisLength[j]) value which satisfies this condition.<br>
+If there is no such j, then longest increasing subsequence in input array 0..i, lisLength[i] = 1 which is formed by adding only ith element.
+<img src="lengthoflongestbitonicsubsequenceinanarray_1.gif" alt="length-of-longest-bitonic-subsequence-in-an-array_1" />
+<br><br>
+
+Example:
+<br><br>
+lisLength[] : [1, 0, 0, 0, 0, 0, 0, 0]
+<br>
+i = 1: lisLength[1] = 1<br>
+    j = 0: input[0] = 12 < input[1] = 18, also lisLength[1] = 1 < lisLength[0] + 1 = 2, so we update:<br>
+        lisLength[1] = lisLength[0] + 1 = 2<br>
+lisLength[] : [1, 2, 0, 0, 0, 0, 0, 0]
+<br><br>
+i = 2: lisLength[2] = 1<br>
+    j = 0: input[0] = 12 > input[2] = 7<br>
+    j = 1: input[1] = 18 > input[2] = 7<br>
+lisLength[] : [1, 2, 1, 0, 0, 0, 0, 0]
+<br><br>
+i = 3: lisLength[3] = 1<br>
+    j = 0: input[0] = 12 < input[3] = 34, also lisLength[3] = 1 < lisLength[0] + 1 = 2, so we update:<br>
+        lisLength[3] = lisLength[0] + 1 = 2<br>
+    j = 1: input[1] = 18 < input[3] = 34, also lisLength[3] = 2 < lisLength[1] + 1 = 3, so we update:<br>
+        lisLength[3] = lisLength[1] + 1 = 3<br>
+    j = 2: input[2] =  7 < input[3] = 34, but lisLength[3] = 3 > lisLength[2] + 1 = 2, so lisLength is not updated.<br>
+lisLength[] : [1, 2, 1, 3, 0, 0, 0, 0]
+<br><br>
+i = 4: lisLength[4] = 1<br>
+    j = 0: input[0] = 12 < input[4] = 30, also lisLength[4] = 1 < lisLength[0] + 1 = 2, so we update:<br>
+        lisLength[4] = lisLength[0] + 1 = 2<br>
+    j = 1: input[1] = 18 < input[4] = 30, also lisLength[4] = 2 < lisLength[1] + 1 = 3, so we update:<br>
+        lisLength[4] = lisLength[1] + 1 = 3<br>
+    j = 2: input[2] =  7 < input[4] = 30, but lisLength[4] = 3 > lisLength[2] + 1 = 2, so lisLength is not updated.<br>
+    j = 3: input[3] = 34 > input[4] = 30<br>
+lisLength[] : [1, 2, 1, 3, 3, 0, 0, 0]
+<br><br>
+i = 5: lisLength[5] = 1<br>
+    j = 0: input[0] = 12 < input[5] = 28, also lisLength[5] = 1 < lisLength[0] + 1 = 2, so we update:<br>
+        lisLength[5] = lisLength[0] + 1 = 2<br>
+    j = 1: input[1] = 18 < input[5] = 28, also lisLength[5] = 2 < lisLength[1] + 1 = 3, so we update:<br>
+        lisLength[5] = lisLength[1] + 1 = 3<br>
+    j = 2: input[2] =  7 < input[5] = 28, but lisLength[5] = 3 > lisLength[2] + 1, so lisLength is not updated.<br>
+    j = 3: input[3] = 34 > input[5] = 28<br>
+    j = 4: input[4] = 30 > input[5] = 28<br>
+lisLength[] : [1, 2, 1, 3, 3, 3, 0, 0]
+<br><br>
+i = 6: lisLength[6] = 1<br>
+    j = 0: input[0] = 12 < input[6] = 90, also lisLength[6] = 1 < lisLength[0] + 1 = 2, so we update:<br>
+        lisLength[6] = lisLength[0] + 1 = 2<br>
+    j = 1: input[1] = 18 < input[6] = 90, also lisLength[6] = 2 < lisLength[1] + 1 = 3, so we update:<br>
+        lisLength[6] = lisLength[1] + 1 = 3<br>
+    j = 2: input[2] =  7 < input[6] = 90, but lisLength[6] = 3 > lisLength[2] + 1, so lisLength is not updated.<br>
+    j = 3: input[3] = 34 < input[6] = 90, also lisLength[6] = 3 < lisLength[3] + 1 = 4, so we update:<br>
+        lisLength[6] = lisLength[3] + 1 = 4<br>
+    j = 4: input[4] = 30 < input[6] = 90, but lisLength[6] = 4 = lisLength[4] + 1, so lisLength is not updated.<br>
+    j = 5: input[5] = 28 < input[6] = 90, but lisLength[6] = 4 = lisLength[5] + 1, so lisLength is not updated.<br>
+lisLength[] : [1, 2, 1, 3, 3, 3, 4, 0]
+<br><br>
+i = 7: lisLength[7] = 1<br>
+    j = 0: input[0] = 12 < input[7] = 88, also lisLength[7] = 1 < lisLength[0] + 1 = 2, so we update:<br>
+        lisLength[7] = lisLength[0] + 1 = 2<br>
+    j = 1: input[1] = 18 < input[7] = 88, also lisLength[7] = 1 < lisLength[1] + 1 = 3, so we update:<br>
+        lisLength[7] = lisLength[1] + 1 = 3<br>
+    j = 2: input[2] =  7 < input[7] = 88, but lisLength[7] = 3 > lisLength[2] + 1, so lisLength is not updated.<br>
+    j = 3: input[3] = 34 < input[7] = 88, also lisLength[7] = 3 < lisLength[3] + 1 = 4, so we update:<br>
+        lisLength[7] = lisLength[3] + 1 = 4<br>
+    j = 4: input[4] = 30 < input[7] = 88, but lisLength[7] = 4 = lisLength[4] + 1, so lisLength is not updated.<br>
+    j = 5: input[5] = 28 < input[7] = 88, but lisLength[7] = 4 = lisLength[5] + 1, so lisLength is not updated.<br>
+    j = 6: input[6] = 90 > input[7] = 88<br>
+lisLength[] : [1, 2, 1, 3, 3, 3, 4, 4]
+<br><br>
+Solution: Maximum value in lisLength array = 4.<br>
+Time complexity of this solution is O(n^2).
+<br><br>
+
+<b>Implementation</b>
+<pre>
+public class LongestIncreasingSubsequence {
+ 
+    public static int longestIncreasingSubsequence(int[] input) {
+ 
+        if(input == null || input.length == 0) {
+            return 0;
+        }
+ 
+        int n = input.length;
+        // lisLength[i] = Length of Longest Increasing Subsequence in input[0..i]
+        int[] lisLength = new int[n];
+        int maxLength = 1;
+        lisLength[0] = 1;
+        for (int i = 1; i < n; i++) {
+            lisLength[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (input[i] > input[j] && lisLength[i] < lisLength[j] + 1) {
+                    lisLength[i] = lisLength[j] + 1;
+                }
+            }
+            // Update the length of longest increasing subsequence found till now
+            if(maxLength < lisLength[i]) {
+                maxLength = lisLength[i];
+            }
+        }
+        return maxLength;
+    }
+ 
+    public static void main(String[] args) {
+        int[] array = { 12, 18, 7, 34, 30, 28, 90, 88 };
+        System.out.println("Length of Longest Increasing Subsequence: " + longestIncreasingSubsequence(array));
+    }
+}
+</pre>
+</html>

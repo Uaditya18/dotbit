@@ -1,0 +1,120 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Insertion Sort Program in C</h1>
+<p>This is a in-place comparison based sorting algorithm. Here, a sub-list is maintained which is always sorted. For example, the lower part of an array is maintained to be sorted. A element which is to be 'insert'ed in this sorted sub-list, has to find its appropriate place and insert it there. Hence the name insertion sort.</p>
+<h2>Implementation in C</h2>
+<pre class="prettyprint notranslate tryit">
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#define MAX 7
+
+int intArray[MAX] = {4,6,3,2,1,9,7};
+
+void printline(int count){
+   int i;
+	
+   for(i = 0;i &lt;count-1;i++){
+      printf("=");
+   }
+	
+   printf("=\n");
+}
+
+void display(){
+   int i;
+   printf("[");
+	
+   // navigate through all items 
+   for(i = 0;i&lt;MAX;i++){
+      printf("%d ",intArray[i]);
+   }
+	
+   printf("]\n");
+}
+
+void insertionSort(){
+
+   int valueToInsert;
+   int holePosition;
+   int i;
+  
+   // loop through all numbers 
+   for(i = 1; i &lt; MAX; i++){ 
+	
+      // select a value to be inserted. 
+      valueToInsert = intArray[i];
+		
+      // select the hole position where number is to be inserted 
+      holePosition = i;
+		
+      // check if previous no. is larger than value to be inserted 
+      while (holePosition &gt; 0 &amp;&amp; intArray[holePosition-1] &gt; valueToInsert){
+         intArray[holePosition] = intArray[holePosition-1];
+         holePosition--;
+         printf(" item moved : %d\n" , intArray[holePosition]);
+      }
+
+      if(holePosition != i){
+         printf(" item inserted : %d, at position : %d\n" , valueToInsert,holePosition);		  
+         // insert the number at hole position 
+         intArray[holePosition] = valueToInsert;   
+      }
+
+      printf("Iteration %d#:",i);
+      display();
+		
+   }  
+}
+
+main(){
+   printf("Input Array: ");
+   display();
+   printline(50);
+   insertionSort();
+   printf("Output Array: ");
+   display();
+   printline(50);
+}
+</pre>
+<p>If we compile and run the above program then it would produce following result &minus;</p>
+<h2>Output</h2>
+<pre class="result notranslate">
+Input Array: [4, 6, 3, 2, 1, 9, 7]
+==================================================
+iteration 1#: [4, 6, 3, 2, 1, 9, 7]
+ item moved :6
+ item moved :4
+ item inserted :3, at position :0
+iteration 2#: [3, 4, 6, 2, 1, 9, 7]
+ item moved :6
+ item moved :4
+ item moved :3
+ item inserted :2, at position :0
+iteration 3#: [2, 3, 4, 6, 1, 9, 7]
+ item moved :6
+ item moved :4
+ item moved :3
+ item moved :2
+ item inserted :1, at position :0
+iteration 4#: [1, 2, 3, 4, 6, 9, 7]
+iteration 5#: [1, 2, 3, 4, 6, 9, 7]
+ item moved :9
+ item moved :6
+ item inserted :7, at position :4
+iteration 6#: [1, 2, 3, 4, 7, 6, 9]
+Output Array: [1, 2, 3, 4, 7, 6, 9]
+==================================================
+</pre>
+<br><br><br><br><br><br><br><br>
+</body>
+</html>

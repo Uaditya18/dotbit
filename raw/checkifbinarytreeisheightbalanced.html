@@ -1,0 +1,44 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Check if Binary Tree is Height Balanced?</h1>
+
+Given a binary tree, determine if it is height-balanced.<br><br>
+<b>Solution</b>
+<br><br>
+A height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.<br><br>
+The solution presented is a recursive. Find the height of left and right subtrees and check the difference of the heights. If the difference is more than 1 the tree is not balanced. The tree is balanced if the difference is zero or one.
+<br><br>
+<b>Implementation:</b>
+<br><br>
+<pre>
+public class CheckBinaryTreeHeightBalanced {
+    public boolean isBalanced(TreeNode root) {
+        int left,right;
+        if(root ==null){ return true;}
+        left = getHeight(root.left);
+        right =getHeight(root.right);
+ 
+        return (Math.abs(left-right)<=1 && isBalanced(root.left) && isBalanced(root.right));
+ 
+    }
+ 
+    public int getHeight(TreeNode root){
+        if(root ==null) return 0;
+        int left = getHeight(root.left);
+        int right = getHeight(root.right);
+ 
+        return 1+ (left>right?left:right);
+    }
+}
+</pre>
+</html>

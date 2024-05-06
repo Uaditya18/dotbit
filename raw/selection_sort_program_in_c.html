@@ -1,0 +1,106 @@
+<!doctype html>
+<head>
+   <style>
+      img {
+      width: 100%;
+      }
+      pre {
+      width: 100%;
+      overflow-x: scroll;
+      }
+   </style>
+</head>
+<h1>Selection Sort Program in C</h1>
+<p>Selection sort is a simple sorting algorithm. This sorting algorithm is a in-place comparison based algorithm in which the list is divided into two parts, sorted part at left end and unsorted part at right end. Initially sorted part is empty and unsorted part is entire list.</p>
+<h2>Implementation in C</h2>
+<pre class="prettyprint notranslate tryit">
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#define MAX 7
+
+int intArray[MAX] = {4,6,3,2,1,9,7};
+
+void printline(int count){
+   int i;
+	
+   for(i = 0;i &lt;count-1;i++){
+      printf("=");
+   }
+	
+   printf("=\n");
+}
+
+void display(){
+   int i;
+   printf("[");
+	
+   // navigate through all items 
+   for(i = 0;i&lt;MAX;i++){
+      printf("%d ", intArray[i]);
+   }
+	
+   printf("]\n");
+}
+
+void selectionSort(){
+
+   int indexMin,i,j; 
+	
+   // loop through all numbers 
+   for(i = 0; i &lt; MAX-1; i++){ 
+	
+      // set current element as minimum 
+      indexMin = i;
+		
+      // check the element to be minimum 
+      for(j = i+1;j&lt;MAX;j++){
+         if(intArray[j] &lt; intArray[indexMin]){
+            indexMin = j;
+         }
+      }
+
+      if(indexMin != i){
+         printf("Items swapped: [ %d, %d ]\n" , intArray[i], intArray[indexMin]); 
+			
+         // swap the numbers 
+         int temp = intArray[indexMin];
+         intArray[indexMin] = intArray[i];
+         intArray[i] = temp;
+      }          
+
+      printf("Iteration %d#:",(i+1));
+      display();
+   }
+}  
+
+main(){
+   printf("Input Array: ");
+   display();
+   printline(50);
+   selectionSort();
+   printf("Output Array: ");
+   display();
+   printline(50);
+}
+</pre>
+<p>If we compile and run the above program then it would produce following result &minus;</p>
+<h2>Output</h2>
+<pre class="result notranslate">
+Input Array: [4, 6, 3, 2, 1, 9, 7]
+==================================================
+     Items swapped: [ 4, 1 ]
+iteration 1#: [1, 6, 3, 2, 4, 9, 7]
+     Items swapped: [ 6, 2 ]
+iteration 2#: [1, 2, 3, 6, 4, 9, 7]
+iteration 3#: [1, 2, 3, 6, 4, 9, 7]
+     Items swapped: [ 6, 4 ]
+iteration 4#: [1, 2, 3, 4, 6, 9, 7]
+iteration 5#: [1, 2, 3, 4, 6, 9, 7]
+     Items swapped: [ 9, 7 ]
+iteration 6#: [1, 2, 3, 4, 6, 7, 9]
+Output Array: [1, 2, 3, 4, 6, 7, 9]
+==================================================
+</pre>
+<br><br><br><br><br><br><br>
+</body>
+</html>

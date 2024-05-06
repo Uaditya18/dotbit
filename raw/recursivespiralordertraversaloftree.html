@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Recursive Spiral Order Traversal of Tree</h1>
+
+This is also called zig-zag order traversal of a binary tree.
+<br><br>
+<b>Approach:</b>
+<br><br>
+To print the nodes in spiral order, nodes at different levels should be printed in alternating order. To change the order of printing alt variable is used. If alt is 1 then printSpiralLevel() prints nodes from left to right else from right to left.
+<br><br>
+Non-Recursive solution of the problem is – Non-recursive Spiral Level Order Traversal
+
+<pre>	
+void printSpiralLevel(struct node* root, int level, int alt);
+int height(struct node* node);
+  
+/* Function to print spiral traversal of a tree*/
+void printSpiral(struct node* root)
+{
+    int h = height(root);
+    int i;
+    bool alt = false;
+    for(i=1; i<=h; i++)
+    {
+        printSpiralLevel(root, i, alt);
+  
+        /*Revert alt to traverse next level in oppposite order*/
+        alt = !alt;
+    }
+}
+  
+/* Print nodes at a given level */
+void printSpiralLevel(struct node* root, int level, int alt)
+{
+    if(root == NULL)
+        return;
+    if(level == 1)
+        printf("%d ", root->data);
+    else if (level > 1)
+    {
+        if(alt)
+        {
+            printSpiralLevel(root->left, level-1, alt);
+            printSpiralLevel(root->right, level-1, alt);
+        }
+        else
+        {
+            printSpiralLevel(root->right, level-1, alt);
+            printSpiralLevel(root->left, level-1, alt);
+        }
+    }
+}
+</pre>
+</html>

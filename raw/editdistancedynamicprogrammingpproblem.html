@@ -1,0 +1,68 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Edit Distance – Dynamic Programming Problem</h1>
+
+Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step.)
+You have the following 3 operations permitted on a word:<br><br>
+a) Insert a character<br>
+b) Delete a character<br>
+c) Replace a character
+<br><br>
+Input: str1 = “cat”, str2 = “cut”
+<br>
+Output: 1<br><br>
+We can convert str1 into str2 by replacing ‘a’ with ‘u’.
+<br><br>
+<b>Solution:</b><br><br>
+What are the subproblems in this case?<br><br>
+The idea is process all characters one by one staring from either from left or right sides of both strings.<br><br>
+Let we traverse from right corner, there are two possibilities for every pair of character being traversed.<br><br>
+
+m: Length of str1 (first string)<br>
+n: Length of str2 (second string)<br><br>
+If last characters of two strings are same, nothing much to do. Ignore last characters and get count for remaining strings. So we recur for lengths m-1 and n-1.<br><br>
+Else (If last characters are not same), we consider all operations on ‘str1′, consider all three operations on last character of first string, recursively compute minimum cost for all three operations and take minimum of three values.<br><br>
+Insert: Recur for m and n-1<br>
+Remove: Recur for m-1 and n<br>
+Replace: Recur for m-1 and n-1<br>
+
+<br>Below is java solution.<br><br>
+<pre>
+public class Solution {
+    public int minDistance(String word1, String word2) {
+        int m = word1.length();
+        int n = word2.length();
+        if(m==0) return n;
+        if(n==0) return m;
+        int dp[][] = new int[m+1][n+1];
+        for(int i=0; i<=m;i++){
+            dp[i][0]=i;
+        }
+        for(int i=0; i<=n;i++){
+            dp[0][i]=i;
+        }
+         
+        for(int i=1; i<=m;i++){
+            for(int j=1; j<=n; j++){
+                if(word1.charAt(i-1) == word2.charAt(j-1)){
+                    dp[i][j] = dp[i-1][j-1];
+                }else{
+                   dp[i][j] = 1+Math.min(dp[i-1][j-1], Math.min(dp[i-1][j],dp[i][j-1]));
+                     
+                }
+            }
+        }
+       return dp[m][n];
+    }
+}
+</pre></html>

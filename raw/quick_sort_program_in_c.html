@@ -1,0 +1,122 @@
+<!doctype html>
+<head>
+   <style>
+      img {
+      width: 100%;
+      }
+      pre {
+      width: 100%;
+      overflow-x: scroll;
+      }
+   </style>
+</head>
+<h1>Quick Sort Program in C</h1>
+<p>Quick sort is a highly efficient sorting algorithm and is based on partitioning of array of data into smaller arrays. A large array is partitioned into two arrays one of which holds values smaller than specified value say pivot based on which the partition is made and another array holds values greater than pivot value.</p>
+<h2>Implementation in C</h2>
+<pre class="prettyprint notranslate tryit">
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#define MAX 7
+
+int intArray[MAX] = {4,6,3,2,1,9,7};
+
+void printline(int count){
+   int i;
+	
+   for(i = 0;i &lt;count-1;i++){
+      printf("=");
+   }
+	
+   printf("=\n");
+}
+
+void display(){
+   int i;
+   printf("[");
+	
+   // navigate through all items 
+   for(i = 0;i&lt;MAX;i++){
+      printf("%d ",intArray[i]);
+   }
+	
+   printf("]\n");
+}
+
+void swap(int num1, int num2){
+   int temp = intArray[num1];
+   intArray[num1] = intArray[num2];
+   intArray[num2] = temp;
+}
+
+int partition(int left, int right, int pivot){
+   int leftPointer = left -1;
+   int rightPointer = right;
+
+   while(true){
+	
+      while(intArray[++leftPointer] &lt; pivot){
+         //do nothing
+      }
+		
+      while(rightPointer &gt; 0 && intArray[--rightPointer] &gt; pivot){
+         //do nothing
+      }
+
+      if(leftPointer &gt;= rightPointer){
+         break;
+      }else{
+         printf(" item swapped :%d,%d\n", 
+         intArray[leftPointer],intArray[rightPointer]);
+         swap(leftPointer,rightPointer);
+      }
+		
+   }
+	
+   printf(" pivot swapped :%d,%d\n", intArray[leftPointer],intArray[right]);
+   swap(leftPointer,right);
+   printf("Updated Array: "); 
+   display();
+   return leftPointer;
+}
+
+void quickSort(int left, int right){        
+   if(right-left &lt;= 0){
+      return;   
+   }else {
+      int pivot = intArray[right];
+      int partitionPoint = partition(left, right, pivot);
+      quickSort(left,partitionPoint-1);
+      quickSort(partitionPoint+1,right);
+   }        
+}   
+
+main(){
+   printf("Input Array: ");
+   display();
+   printline(50);
+   quickSort(0,MAX-1);
+   printf("Output Array: ");
+   display();
+   printline(50);
+}
+</pre>
+<p>If we compile and run the above program then it would produce following result &minus;</p>
+<h2>Output</h2>
+<pre class="result notranslate">
+Input Array: [4 6 3 2 1 9 7 ]
+==================================================
+ pivot swapped :9,7
+Updated Array: [4 6 3 2 1 7 9 ]
+ pivot swapped :4,1
+Updated Array: [1 6 3 2 4 7 9 ]
+ item swapped :6,2
+ pivot swapped :6,4
+Updated Array: [1 2 3 4 6 7 9 ]
+ pivot swapped :3,3
+Updated Array: [1 2 3 4 6 7 9 ]
+Output Array: [1 2 3 4 6 7 9 ]
+==================================================
+</pre>
+<br><br><br><br><br><br><br>
+</body>
+</html>

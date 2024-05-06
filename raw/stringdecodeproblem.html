@@ -1,0 +1,73 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>String Decode Problem</h1>
+
+<b>Problem:</b><br><br>
+
+If a=1, b=2, c=3,….z=26. Given a string, find all possible codes that string
+can generate. Give a count as well as print the strings.
+<br><br>
+For example:<br><br>
+Input: “1123″. You need to general all valid alphabet codes from this string.
+<br><br>
+Output List<br><br>
+aabc //a = 1, a = 1, b = 2, c = 3<br>
+kbc // since k is 11, b = 2, c= 3<br>
+alc // a = 1, l = 12, c = 3<br>
+aaw // a= 1, a =1, w= 23<br>
+kw // k = 11, w = 23<br>
+<br>
+<b>Solution:</b>
+<br><pre>
+class DecodeString
+{
+     
+static void Main(string[] args)
+{
+    if (args.Length != 1)
+    {
+        Console.WriteLine("Usage: AllPossibleCodes.exe <number>");
+        return;
+    }
+    Process(args[0], "");
+}
+ 
+ 
+Process(args[0], "");
+ 
+static void ProcessString(string number,string code)
+{
+    if (number == null ||
+        number.Length == 0)
+    {
+        if (code != null && code.Length > 0)
+        {
+            Console.WriteLine(code);
+        }
+        return;
+    }
+    ProcessString(number.Substring(1), code +
+        (Convert.ToChar('a' + (number[0] - '0') - 1)).ToString());
+    if (number.Length > 1)
+    {
+        int n = Convert.ToInt32(number.Substring(0, 2));
+        if (n <= 26)
+        {
+            ProcessString(number.Substring(2), code +
+                (Convert.ToChar('a' + n - 1)).ToString());
+        }
+    }
+}
+ 
+}
+</pre></html>

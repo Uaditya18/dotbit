@@ -1,0 +1,43 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Find Buy/Sell Prices in Array of Stock Values to Maximize Profit</h1>
+
+<b>Problem:</b><br><br> You have given a stock prices for next 10 days. Find out: max benefit in best time complexity in buy and sell 1 share ?<br><br>
+Condition: Share must be sold any day after buying date.<br>
+
+For ex:<br>
+<pre>
+Share price in thousands
+5 1 4 6 7 8 4 3 7 9
+Max benefit 9 – 1 = 8 thousand
+</pre><br>
+<b>Solution:</b>
+<br><br>
+The max benefit is the case where you buy at the lowest price and sell at the highest, with the condition that the buy has to be before sell.
+<br><pre>
+public static int getMaxBenefit(int []S)
+{
+ int maxBenefit = 0;
+ int minPrice = Integer.MAX_VALUE;
+ for (int i = 0; i < S.length; i++)
+ {
+ maxBenefit = Math.max(maxBenefit, S[i] - minPrice);
+ minPrice = Math.min(S[i], minPrice);
+ }
+ 
+ return maxBenefit;
+}
+</pre>
+Time Complexity: O(N)
+
+</html>

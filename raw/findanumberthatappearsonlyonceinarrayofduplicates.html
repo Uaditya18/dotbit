@@ -1,0 +1,38 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Find a Number that Appears Only once in array of Duplicates</h1>
+
+<b>Problem:</b> Given an array of integers, every element appears twice except for one. Find that single one.<br><br> 
+
+Note:Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory. 
+
+<br><br>
+<b>Solution:</b><br><br> XORing x with itself gives you 0. Using this property we can find this in linear time.
+<pre>
+public int singleNumber(int[] A)
+{
+    int ans = A[0];
+    for(int i=1;i<A.length;i++)
+    {
+        ans = ans^A[i];
+    }
+ 
+    return ans;
+}
+</pre>
+<br><br>
+Time Complexity: O(N)
+
+Space Complexity: O(1)
+
+</html>

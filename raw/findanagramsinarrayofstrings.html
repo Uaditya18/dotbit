@@ -1,0 +1,52 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Find Anagrams in array of Strings</h1>
+
+<b>Problem:</b> You are given an array of strings and you have to print all the anagrams within the array.<br><br>
+
+What is anagram – For those who don’t know, two words are anagrams if they contain the same characters.<br><br>
+We have already discussed how to check if 2 strings are anagrams here.<br><br>
+
+<b>Solution:</b><br><br>
+
+Let’s use this example to solve the problem [“bat”, “code”, “cat”, “tab”, “cab”, “crazy”, “act”]
+<br><br>
+<b>Method 1:</b> (Brute Force)
+<br><br>
+The brute force solution would be to take each string and compare it to every other string in the array one character at a time O(n^4) solution.<br><br>
+Assuming there are n strings with maximum n characters each.<br><br>
+
+<b>Method 2:</b> O(N^3)<br><br>
+
+One way we can quicken the string comparison process is by sorting each string alphabetically (any sorting would be fine actually).<br>
+Pre-sorting helps you avoid comparing each character in a string to each character in another string. You only need to compare every character to the character in the corresponding position of the other string.<br>
+This reduces the order of the solution ( O(n^2 log n (sorting n strings with n characters each) + n^3 (n^2 comparisons of n characters each)) = O(n^3)) assuming the sorting algorithm is O(n log n)).
+<br><br>
+However, this increases memory usage since you now need to store the original strings so you can print them out later.<br><br>
+After sorting the characters in the string, the array would look like this [abt”, “cdeo”, “act”, “abt”, “abc”, “acryz”, “act”].
+<br><br>
+<b>Method 3:</b><br><br>
+
+We are comparing each string with every other string. That seems inefficient. How about in addition to sorting the characters in each string, we sort each string in the array alphabetically.<br>
+Sorting the strings in the array means you do not have to compare each string to every other string, you only have to compare it to the next string in line.<br>
+If they happen to be the same (i.e. found an anagram), then you can compare with the one after that. Whichever the case is, the order of comparison in this case will be of the order O(n) instead of O(n^2). <br>
+This sorting will reduce the order to ( O(n^2 log n (sorting characters) + n^2 log n (sorting strings) + n^2 (n comparisons of n characters each)) <br>
+= O(n^2 log n)<br><br>
+Assuming the sorting algorithm is O(n log n)).
+<br><br>
+After sorting the strings, the array would look like [“abt”, ""abc“, abt”, "acryz", ”act”, “act”, “act”, “cdeo”].
+<br><br>
+There is an alternate solution using hashing. Put each string in a hash table ( O(n) ). If the spot in the hash table is already taken, then that is an anagram. <br>
+The order for this solution is n^2 (hashing n strings) + n (n insertions into hash table) = O(n^2)
+<br>
+Assuming hashing each string is O(n) .<br><br>

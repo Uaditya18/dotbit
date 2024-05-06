@@ -1,0 +1,62 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Largest subarray with equal number of 0s and 1s</h1>
+
+<b>Problem:</b> Given an binary array containing only 0s and 1s, find the largest subarray which contain equal no of 0s and 1s.<br><br>
+
+<b>Examples:</b><br><br>
+
+Input: arr[] = {1, 0, 1, 1, 1, 0, 0,0,1}<br><br>
+Output: 1 to 8 (Starting and Ending indexes of output sub array)<br><br>
+
+<b>Implementation:</b><br><br>
+In this method,use two nested loops. The outer loop picks a starting point i. The inner loop considers all subarrays starting from i. If size of a subarray is greater than maximum size so far, then update the maximum size.<br><br>
+In this implementation, 0s are considered as -1 and sum of all values from i to j is calculated. If sum becomes 0, then size of this subarray is compared with largest size so far. Complexity of this method is O(n^2).<br><br>
+<pre>
+int findLargestSubArray(int arr[], int n)
+{
+    int sum = 0;
+    int maxsize = -1, fromIndex;
+  
+    // Pick a starting point as i
+    for (int i = 0; i < n-1; i++)
+    {
+        if(arr[j] == 0)
+            sum = -1;
+        else
+            sum = 1;       
+         
+        // Consider all subarrays
+        for (int j = i+1; j < n; j++)
+        {
+            if(arr[j] == 0)
+                sum += -1;
+            else
+                sum += 1;
+  
+            /* If this is a 0 sum subarray, then compare it with
+            maximum size subarray calculated so far */
+            if(sum == 0 && maxsize < j-i+1)
+            {
+                maxsize = j - i + 1;
+                fromIndex = i;
+            }
+        }
+    }
+  
+    return maxsize;
+}
+</pre>
+Time Complexity: O(n^2)
+Auxiliary Space: O(1)
+</html>

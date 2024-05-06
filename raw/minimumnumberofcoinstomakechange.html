@@ -1,0 +1,140 @@
+<!doctype html>
+<head>
+    <style>
+        img {
+        width: 100%;
+        }
+        pre {
+        width: 100%;
+        overflow-x: scroll;
+        }
+    </style>
+</head>
+<h1>Minimum number of coins to make change</h1>
+
+Given an infinite supply of coins of values: {C1, C2, ..., Cn} and a sum. Find minimum number of coins that can represent the sum.
+<br><br>
+<b>Algorithm/Insights</b>
+<br><br>
+Consider values set as {2, 5, 3}, n = length of values = 3<br>
+and sum = 7<br>
+Then we can make change for 7 by reducing the given coin values one by one and finding if we can make of the remaining amount.<br>
+For example, for 7, we subtract 2, 5, 3 one by one and then find out if we can make change of the remaining amounts:<br>
+1-> (7-2) = 5,<br>
+2-> (7-5) = 2,<br>
+3-> (7-3) = 4 respectively.<br>
+Of all the possibilities we find the one which gives us minimum number of coins i.e. minimum number of coins from #1, #2 and #3 above and add 1 to it.<br>
+So, the next step in this problem is to find out minimum number of coins to make change for 5, 2, 4 which can be found by applying same strategy as above taking sum as 5, 2 and 4 and finally stopping when no further amount can be reduced from sum or sum becomes 0.<br>
+If no further values can be reduced from sum to make change, and it is still non zero, then this path does not lead to a solution.
+<br><br>
+Hence, we have following recurrence relation:<br>
+    If sum = 0, minCoins = 0 - because no coins are required to make change for 0.<br>
+    else minCoins(sum) = min(minCoins(sum-values[i])) + 1, for all i = 0 to n-1, where sum >= values[i]<br>
+    If there is no i for which sum >= value[i], then minCoins(sum) = ∞ which is represented by Integer.MAX_VALUE
+<br><br>
+For finding minimum number of coins for sum = 7:<br>
+A) minCoins(7) <br>
+               = min(minCoins(7-values[i])) + 1, for all i = 0 to n-1, where sum >= values[i]<br>
+               = min(minCoins(7-2), minCoins(7-5), minCoins(7-3)) + 1<br>
+               = min(minCoins(5), minCoins(2), minCoins(4)) + 1
+<br><br>
+B) minCoins(5) 
+               = min(minCoins(5-values[i])) + 1, for all i = 0 to n-1, where sum >= values[i]<br>
+               = min(minCoins(5-2), minCoins(5-5), minCoins(5-3)) + 1<br>
+               = min(minCoins(3), minCoins(0), minCoins(2)) + 1
+<br><br>
+C) minCoins(3) <br>
+               = min(minCoins(3-values[i])) + 1, for all i = 0 to n-1, where sum >= values[i]<br>
+               = min(minCoins(3-2), minCoins(3-3)) + 1,             because 3 < 5, we do not consider it<br>
+               = min(minCoins(1), minCoins(0)) + 1
+<br><br>
+D) minCoins(1) = ∞    because there is no value in set {2, 5, 3} which is less than 1 so 1 cannot be represented using any of these coins.
+<br><br>
+E) minCoins(0) = 0
+<br><br>
+Therefore,<br> 
+C) minCoins(3) <br>
+               = min(minCoins(1), minCoins(0)) + 1 = min(0, ∞) + 1 = 1
+<br><br>
+F) minCoins(2) <br>
+               = min(minCoins(2-values[i])) + 1, for all i = 0 to n-1, where sum >= values[i]<br>
+               = min(minCoins(2-2)) + 1<br>
+               = min(minCoins(0)) + 1<br>
+               = 1
+<br><br>
+Therefore,<br> 
+B) minCoins(5)<br> 
+               = min(minCoins(3), minCoins(0), minCoins(2)) + 1 = min(1, 0, 1) + 1 = 0 + 1 = 1
+<br><br>
+G) minCoins(4) <br>
+               = min(minCoins(4-values[i])) + 1, for all i = 0 to n-1, where sum >= values[i]<br>
+               = min(minCoins(4-2), minCoins(4-3)) + 1<br>
+               = min(minCoins(2), minCoins(1)) + 1<br>
+               = min(1, ∞) + 1<br>
+               = 1 + 1<br>
+               = 2
+<br><br>
+Finally,<br> 
+A) minCoins(7) <br>
+               = min(minCoins(5), minCoins(2), minCoins(4)) + 1<br>
+               = min(1, 1, 2) + 1<br>
+               = 2
+<br><br>
+Time complexity of recursive algorithm is exponential.<br>
+An implementation of this algorithm is provided in the code snippet section.
+<br><br>
+To solve this problem in a more efficient way, we can use Dynamic Programming.<br>
+As, we can see from above example, that we are recalculating the solution for sub problems again and again. For example, we calculate minCoins(2) again in the sub problems minCoins(4) and minCoins(5).<br>
+If we create an array for already calculated values, then it will save us a lot of recomputation.<br>
+So, we create a minCoins array - minCoins[sum+1] where minCoins[i] represents minimum number of coins required to make change for amount = i.
+We build up the array in bottom up manner starting with minCoins[0].<br>
+So, for any j, if we want to find minCoins[j] then minCoins[0...j-1] will already have been calculated and we just need to find out minimum of minCoins[j-values[i]] where i = 0...n-1 and j >= values[i]
+<br><br>
+The time complexity of the Dynamic Programming solution is O(n*sum).<br>
+The space complexity is O(sum).<br>
+Here n is length of the array of values.
+<br><br>
+
+<b>Implementation</b>
+<pre>
+public class MinCoins {
+     
+    // Recursive Solution to find minimum number of coins
+    public static int getMinCoins(int[] values, int sum) {
+        if(sum == 0)
+            return 0;
+        int min = Integer.MAX_VALUE;
+        for(int i = 0; i < values.length; i++) {
+            if(sum >= values[i])
+                min = Math.min(min, getMinCoins(values, sum-values[i]));
+        }
+        return min + 1;
+    }
+ 
+    // DP Solution to find minimum number of coins
+    public static int getMinCoinsDP(int[] values, int sum) {
+        int min = 0;
+        int[] minCoins = new int[sum+1];        
+        minCoins[0] = 0;
+        for(int i = 1; i <= sum; i++) {
+            min = Integer.MAX_VALUE;
+            for(int j = 0; j < values.length; j++) {
+                if(i >= values[j])
+                    min = Math.min(min, minCoins[i - values[j]]);
+            }
+            if(min != Integer.MAX_VALUE)
+                minCoins[i] = min + 1;
+            else
+                minCoins[i] = Integer.MAX_VALUE;
+        }
+        return minCoins[sum];
+    }   
+     
+    public static void main(String[] args) {
+        int[] values = {2, 5, 3};
+        int sum = 7;
+        System.out.println("Minimum number of coins: " + getMinCoinsDP(values, sum));
+    }
+}
+</pre>
+</html>
