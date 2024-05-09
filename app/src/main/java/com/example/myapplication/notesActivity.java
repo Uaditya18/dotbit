@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,12 +24,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.myapplication.DataBase.RoomDB;
 import com.example.myapplication.adapters.NotesListAdapters;
 import com.example.myapplication.models.Notes;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class notesActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class notesActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     NotesListAdapters notesListAdapters;
@@ -47,6 +49,33 @@ public class notesActivity extends AppCompatActivity implements PopupMenu.OnMenu
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.main);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
+
+            } else if (itemId == R.id.content) {
+                startActivity(new Intent(getApplicationContext(),notesActivity.class));
+                finish();
+            } else if (itemId == R.id.note) {
+                return true;
+            } else if (itemId == R.id.chatbot) {
+                startActivity(new Intent(getApplicationContext(), chat_bot.class));
+                finish();
+            } else if (itemId == R.id.user) {
+                startActivity(new Intent(getApplicationContext(), profile.class));
+                finish();
+            }
+            else {
+                // Handle other menu items if needed
+                return false;
+            }
+            return true; // Return true to indicate that the item selection has been handled
         });
 
         recyclerView = findViewById(R.id.recycler_home);
@@ -132,44 +161,12 @@ public class notesActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
         @Override
         public void onLongClick(Notes notes, CardView cardView) {
-            selected_note = new Notes();
-            selected_note = notes;
-            showPopup(cardView);
+
         }
     };
 
-    private void showPopup(CardView cardView) {
-        PopupMenu popupMenu = new PopupMenu(this,cardView);
-        popupMenu.setOnMenuItemClickListener(this);
-        popupMenu.inflate(R.menu.popup_menu);
-        popupMenu.show();
-    }
 
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        int itemId = item.getItemId();
-//        if (itemId == R.id.pin) {
-//            if (selected_note.isPinned()) {
-//                database.mainDAO().pin(selected_note.getId(), false);
-//                Toast.makeText(this, "Unpinned", Toast.LENGTH_SHORT).show();
-//            } else {
-//                database.mainDAO().pin(selected_note.getId(), true);
-//                Toast.makeText(this, "Pinned", Toast.LENGTH_SHORT).show();
-//            }
-//            notes.clear();
-//            notes.addAll(database.mainDAO().getALL());
-//            notesListAdapters.notifyDataSetChanged();
-//            return true;
-//        } else
-            if (itemId == R.id.delete) {
-            database.mainDAO().delete(selected_note);
-            notes.remove(selected_note);
-            notesListAdapters.notifyDataSetChanged();
-            Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
-            return true;
-        } else {
-            return false;
-        }
-    }
+
+
 
 }

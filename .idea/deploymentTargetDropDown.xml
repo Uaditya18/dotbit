@@ -2,10 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="MainActivity">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>
+      <entry key="chat_bot">
+        <State />
+      </entry>
       <entry key="notesActivity">
+        <State />
+      </entry>
+      <entry key="profile">
         <State />
       </entry>
     </value>

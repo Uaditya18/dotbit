@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/content"
+        android:icon="@drawable/content"
+        android:id="@+id/content"/>
+    <item android:title="@string/notes"
+        android:icon="@drawable/note"
+        android:id="@+id/note"/>
+    <item android:title="@string/main"
+        android:icon="@drawable/home"
+        android:id="@+id/main"/>
+    <item android:title="@string/chatbot"
+        android:icon="@drawable/chatbot"
+        android:id="@+id/chatbot"/>
+    <item android:title="@string/profile"
+        android:icon="@drawable/user"
+        android:id="@+id/user"/>
+</menu>
